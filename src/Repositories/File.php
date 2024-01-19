@@ -8,7 +8,7 @@ use ALameLlama\Geographer\Earth;
 use ALameLlama\Geographer\Country;
 use ALameLlama\Geographer\Exceptions\FileNotFoundException;
 use ALameLlama\Geographer\Exceptions\MisconfigurationException;
-use ALameLlama\Geographer\Helpers\WhereAmI;
+use MenaraSolutions\Geographer\Helpers\WhereAmI;
 use ALameLlama\Geographer\State;
 use ALameLlama\Geographer\Exceptions\ObjectNotFoundException;
 use ALameLlama\Geographer\City;
