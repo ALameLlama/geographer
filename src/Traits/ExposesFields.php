@@ -25,7 +25,7 @@ trait ExposesFields
      * @return mixed
      * @throws UnknownFieldException
      */
-    public function offsetGet($offset): mixed
+    public function offsetGet(mixed $offset): mixed
     {
         if (is_string($offset)) {
             return $this->__get($offset);
