@@ -1,15 +1,14 @@
 {
-    "name": "menarasolutions/geographer",
+    "name": "alamellama/geographer",
     "type": "library",
     "description": "A PHP library that knows how any country, state or city is called in any language",
     "keywords": ["geolocation","localization","geonames","geo"],
-    "homepage": "https://github.com/MenaraSolutions/geographer",
+    "homepage": "https://github.com/ALameLlama/geographer",
     "license": "MIT",
     "authors": [
         {
-            "name": "Denis Mysenko",
-            "email": "denis@menara.com.au",
-            "homepage": "https://www.menara.com.au"
+            "name": "Nicholas Ciechanowski",
+            "email": "nicholasaciechanowski@gmail.ocm",
         }
     ],
     "require": {
@@ -26,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MenaraSolutions\\Geographer\\": "src/"
+            "ALameLlama\\Geographer\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MenaraSolutions\\Geographer\\": "src/",
+            "ALameLlama\\Geographer\\": "src/",
             "Tests\\": "tests/Geographer/"
         }
     },
