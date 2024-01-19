@@ -2,10 +2,10 @@
 
 namespace ALameLlama\Geographer\Services;
 
-use MenaraSolutions\Geographer\Contracts\ManagerInterface;
-use MenaraSolutions\Geographer\Contracts\RepositoryInterface;
-use MenaraSolutions\Geographer\Contracts\TranslationAgencyInterface;
-use MenaraSolutions\Geographer\Repositories\File;
+use ALameLlama\Geographer\Contracts\ManagerInterface;
+use ALameLlama\Geographer\Contracts\RepositoryInterface;
+use ALameLlama\Geographer\Contracts\TranslationAgencyInterface;
+use ALameLlama\Geographer\Repositories\File;
 
 /**
  * Class DefaultManager

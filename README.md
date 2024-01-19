@@ -45,8 +45,8 @@ $ composer require menarasolutions/geographer-es
 ## Usage
 
 ```php
-use MenaraSolutions\Geographer\Earth;
-use MenaraSolutions\Geographer\Country;
+use ALameLlama\Geographer\Earth;
+use ALameLlama\Geographer\Country;
 
 // Default entry point is our beautiful planet
 $earth = new Earth();

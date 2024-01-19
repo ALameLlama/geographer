@@ -2,8 +2,8 @@
 
 namespace ALameLlama\Geographer;
 
-use MenaraSolutions\Geographer\Collections\MemberCollection;
-use MenaraSolutions\Geographer\Services\DefaultManager;
+use ALameLlama\Geographer\Collections\MemberCollection;
+use ALameLlama\Geographer\Services\DefaultManager;
 
 class Earth extends Divisible
 {

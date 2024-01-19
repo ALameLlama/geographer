@@ -2,11 +2,11 @@
 
 namespace Tests;
 
-use MenaraSolutions\Geographer\Collections\MemberCollection;
-use MenaraSolutions\Geographer\Country;
-use MenaraSolutions\Geographer\Earth;
-use MenaraSolutions\Geographer\Services\DefaultManager;
-use MenaraSolutions\Geographer\State;
+use ALameLlama\Geographer\Collections\MemberCollection;
+use ALameLlama\Geographer\Country;
+use ALameLlama\Geographer\Earth;
+use ALameLlama\Geographer\Services\DefaultManager;
+use ALameLlama\Geographer\State;
 
 class StateTest extends Test
 {

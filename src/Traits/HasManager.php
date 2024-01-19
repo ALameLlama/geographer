@@ -2,7 +2,7 @@
 
 namespace ALameLlama\Geographer\Traits;
 
-use MenaraSolutions\Geographer\Contracts\ManagerInterface;
+use ALameLlama\Geographer\Contracts\ManagerInterface;
 
 /**
  * Class HasManager

@@ -2,7 +2,7 @@
 
 namespace ALameLlama\Geographer\Traits;
 
-use MenaraSolutions\Geographer\Exceptions\UnknownFieldException;
+use ALameLlama\Geographer\Exceptions\UnknownFieldException;
 
 /**
  * Class ExposedFields
@@ -13,7 +13,7 @@ trait ExposesFields
      * @param mixed $offset
      * @return boolean
      */
-    public function offsetExists(mixed $offset): bool
+    public function offsetExists(mixed$offset): bool
     {
         return isset($this->exposed[$offset]);
     }

@@ -2,15 +2,15 @@
 
 namespace ALameLlama\Geographer\Services\Poliglottas;
 
-use MenaraSolutions\Geographer\Contracts\TranslationAgencyInterface;
-use MenaraSolutions\Geographer\Country;
-use MenaraSolutions\Geographer\State;
-use MenaraSolutions\Geographer\Earth;
-use MenaraSolutions\Geographer\Exceptions\MisconfigurationException;
-use MenaraSolutions\Geographer\Exceptions\FileNotFoundException;
-use MenaraSolutions\Geographer\Contracts\IdentifiableInterface;
-use MenaraSolutions\Geographer\Contracts\PoliglottaInterface;
-use MenaraSolutions\Geographer\City;
+use ALameLlama\Geographer\Contracts\TranslationAgencyInterface;
+use ALameLlama\Geographer\Country;
+use ALameLlama\Geographer\State;
+use ALameLlama\Geographer\Earth;
+use ALameLlama\Geographer\Exceptions\MisconfigurationException;
+use ALameLlama\Geographer\Exceptions\FileNotFoundException;
+use ALameLlama\Geographer\Contracts\IdentifiableInterface;
+use ALameLlama\Geographer\Contracts\PoliglottaInterface;
+use ALameLlama\Geographer\City;
 
 /**
  * Class Base

@@ -2,10 +2,10 @@
 
 namespace Tests;
 
-use MenaraSolutions\Geographer\Collections\MemberCollection;
-use MenaraSolutions\Geographer\Country;
-use MenaraSolutions\Geographer\Exceptions\MisconfigurationException;
-use MenaraSolutions\Geographer\Earth;
+use ALameLlama\Geographer\Collections\MemberCollection;
+use ALameLlama\Geographer\Country;
+use ALameLlama\Geographer\Exceptions\MisconfigurationException;
+use ALameLlama\Geographer\Earth;
 
 class EarthTest extends Test
 {

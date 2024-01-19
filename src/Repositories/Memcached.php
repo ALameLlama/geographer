@@ -2,16 +2,16 @@
 
 namespace ALameLlama\Geographer\Repositories;
 
-use MenaraSolutions\Geographer\Contracts\IdentifiableInterface;
-use MenaraSolutions\Geographer\Contracts\RepositoryInterface;
-use MenaraSolutions\Geographer\Earth;
-use MenaraSolutions\Geographer\Country;
-use MenaraSolutions\Geographer\Exceptions\FileNotFoundException;
-use MenaraSolutions\Geographer\Exceptions\MisconfigurationException;
-use MenaraSolutions\Geographer\State;
-use MenaraSolutions\Geographer\Exceptions\ObjectNotFoundException;
-use MenaraSolutions\Geographer\City;
-use MenaraSolutions\Geographer\Repositories\File;
+use ALameLlama\Geographer\Contracts\IdentifiableInterface;
+use ALameLlama\Geographer\Contracts\RepositoryInterface;
+use ALameLlama\Geographer\Earth;
+use ALameLlama\Geographer\Country;
+use ALameLlama\Geographer\Exceptions\FileNotFoundException;
+use ALameLlama\Geographer\Exceptions\MisconfigurationException;
+use ALameLlama\Geographer\State;
+use ALameLlama\Geographer\Exceptions\ObjectNotFoundException;
+use ALameLlama\Geographer\City;
+use ALameLlama\Geographer\Repositories\File;
 
 class Memcached extends File implements RepositoryInterface
 {

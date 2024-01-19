@@ -2,11 +2,11 @@
 
 namespace ALameLlama\Geographer\Collections;
 
-use MenaraSolutions\Geographer\Collections\Traits\ImplementsArray;
-use MenaraSolutions\Geographer\Contracts\ManagerInterface;
-use MenaraSolutions\Geographer\Exceptions\ObjectNotFoundException;
-use MenaraSolutions\Geographer\Traits\HasManager;
-use MenaraSolutions\Geographer\Divisible;
+use ALameLlama\Geographer\Collections\Traits\ImplementsArray;
+use ALameLlama\Geographer\Contracts\ManagerInterface;
+use ALameLlama\Geographer\Exceptions\ObjectNotFoundException;
+use ALameLlama\Geographer\Traits\HasManager;
+use ALameLlama\Geographer\Divisible;
 
 /**
  * Class MemberCollection

@@ -2,12 +2,12 @@
 
 namespace Tests;
 
-use MenaraSolutions\Geographer\City;
-use MenaraSolutions\Geographer\Collections\MemberCollection;
-use MenaraSolutions\Geographer\Country;
-use MenaraSolutions\Geographer\Divisible;
-use MenaraSolutions\Geographer\Earth;
-use MenaraSolutions\Geographer\Services\TranslationAgency;
+use ALameLlama\Geographer\City;
+use ALameLlama\Geographer\Collections\MemberCollection;
+use ALameLlama\Geographer\Country;
+use ALameLlama\Geographer\Divisible;
+use ALameLlama\Geographer\Earth;
+use ALameLlama\Geographer\Services\TranslationAgency;
 
 class CountryTest extends Test
 {

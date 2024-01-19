@@ -2,13 +2,13 @@
 
 namespace ALameLlama\Geographer;
 
-use MenaraSolutions\Geographer\Collections\MemberCollection;
-use MenaraSolutions\Geographer\Contracts\ManagerInterface;
-use MenaraSolutions\Geographer\Contracts\IdentifiableInterface;
-use MenaraSolutions\Geographer\Services\DefaultManager;
-use MenaraSolutions\Geographer\Traits\ExposesFields;
-use MenaraSolutions\Geographer\Traits\HasManager;
-use MenaraSolutions\Geographer\Traits\HasCollection;
+use ALameLlama\Geographer\Collections\MemberCollection;
+use ALameLlama\Geographer\Contracts\ManagerInterface;
+use ALameLlama\Geographer\Contracts\IdentifiableInterface;
+use ALameLlama\Geographer\Services\DefaultManager;
+use ALameLlama\Geographer\Traits\ExposesFields;
+use ALameLlama\Geographer\Traits\HasManager;
+use ALameLlama\Geographer\Traits\HasCollection;
 
 /**
  * Class Divisible

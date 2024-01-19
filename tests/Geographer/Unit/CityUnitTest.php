@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use MenaraSolutions\Geographer\City;
+use ALameLlama\Geographer\City;
 
 class CityUnitTest extends Test
 {

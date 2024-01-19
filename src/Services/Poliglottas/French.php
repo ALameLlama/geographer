@@ -2,7 +2,7 @@
 
 namespace ALameLlama\Geographer\Services\Poliglottas;
 
-use MenaraSolutions\Geographer\Contracts\IdentifiableInterface;
+use ALameLlama\Geographer\Contracts\IdentifiableInterface;
 
 /**
  * Class French

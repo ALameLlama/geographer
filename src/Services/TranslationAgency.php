@@ -2,21 +2,21 @@
 
 namespace ALameLlama\Geographer\Services;
 
-use MenaraSolutions\Geographer\Contracts\IdentifiableInterface;
-use MenaraSolutions\Geographer\Contracts\PoliglottaInterface;
-use MenaraSolutions\Geographer\Contracts\RepositoryInterface;
-use MenaraSolutions\Geographer\Contracts\TranslationAgencyInterface;
-use MenaraSolutions\Geographer\Exceptions\MisconfigurationException;
-use MenaraSolutions\Geographer\Services\Poliglottas\Danish;
-use MenaraSolutions\Geographer\Services\Poliglottas\Dutch;
-use MenaraSolutions\Geographer\Services\Poliglottas\French;
-use MenaraSolutions\Geographer\Services\Poliglottas\German;
-use MenaraSolutions\Geographer\Services\Poliglottas\Mandarin;
-use MenaraSolutions\Geographer\Services\Poliglottas\Russian;
-use MenaraSolutions\Geographer\Services\Poliglottas\English;
-use MenaraSolutions\Geographer\Services\Poliglottas\Spanish;
-use MenaraSolutions\Geographer\Services\Poliglottas\Italian;
-use MenaraSolutions\Geographer\Services\Poliglottas\Ukrainian;
+use ALameLlama\Geographer\Contracts\IdentifiableInterface;
+use ALameLlama\Geographer\Contracts\PoliglottaInterface;
+use ALameLlama\Geographer\Contracts\RepositoryInterface;
+use ALameLlama\Geographer\Contracts\TranslationAgencyInterface;
+use ALameLlama\Geographer\Exceptions\MisconfigurationException;
+use ALameLlama\Geographer\Services\Poliglottas\Danish;
+use ALameLlama\Geographer\Services\Poliglottas\Dutch;
+use ALameLlama\Geographer\Services\Poliglottas\French;
+use ALameLlama\Geographer\Services\Poliglottas\German;
+use ALameLlama\Geographer\Services\Poliglottas\Mandarin;
+use ALameLlama\Geographer\Services\Poliglottas\Russian;
+use ALameLlama\Geographer\Services\Poliglottas\English;
+use ALameLlama\Geographer\Services\Poliglottas\Spanish;
+use ALameLlama\Geographer\Services\Poliglottas\Italian;
+use ALameLlama\Geographer\Services\Poliglottas\Ukrainian;
 
 /**
  * Class TranslationAgency

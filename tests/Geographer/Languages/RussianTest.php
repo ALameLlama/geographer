@@ -3,7 +3,7 @@
 namespace Tests\Languages;
 
 use Tests\Test;
-use MenaraSolutions\Geographer\Earth;
+use ALameLlama\Geographer\Earth;
 
 class RussianTest extends Test
 {

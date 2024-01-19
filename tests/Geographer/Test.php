@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use MenaraSolutions\Geographer\Earth;
+use ALameLlama\Geographer\Earth;
 
 abstract class Test extends \PHPUnit\Framework\TestCase
 {

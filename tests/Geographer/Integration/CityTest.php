@@ -2,9 +2,9 @@
 
 namespace Tests;
 
-use MenaraSolutions\Geographer\Earth;
-use MenaraSolutions\Geographer\City;
-use MenaraSolutions\Geographer\State;
+use ALameLlama\Geographer\Earth;
+use ALameLlama\Geographer\City;
+use ALameLlama\Geographer\State;
 
 class CityTest extends \PHPUnit\Framework\TestCase
 {
