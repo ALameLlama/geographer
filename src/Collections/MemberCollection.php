@@ -1,6 +1,6 @@
 <?php
 
-namespace MenaraSolutions\Geographer\Collections;
+namespace ALameLlama\Geographer\Collections;
 
 use MenaraSolutions\Geographer\Collections\Traits\ImplementsArray;
 use MenaraSolutions\Geographer\Contracts\ManagerInterface;

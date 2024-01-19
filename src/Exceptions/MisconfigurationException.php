@@ -1,6 +1,6 @@
 <?php
 
-namespace MenaraSolutions\Geographer\Exceptions;
+namespace ALameLlama\Geographer\Exceptions;
 
 /**
  * Class MisconfigurationException

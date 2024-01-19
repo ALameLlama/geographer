@@ -1,6 +1,6 @@
 <?php
 
-namespace MenaraSolutions\Geographer;
+namespace ALameLlama\Geographer;
 
 /**
  * Class City

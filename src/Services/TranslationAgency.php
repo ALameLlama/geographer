@@ -1,6 +1,6 @@
 <?php
 
-namespace MenaraSolutions\Geographer\Services;
+namespace ALameLlama\Geographer\Services;
 
 use MenaraSolutions\Geographer\Contracts\IdentifiableInterface;
 use MenaraSolutions\Geographer\Contracts\PoliglottaInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace MenaraSolutions\Geographer\Collections\Traits;
+namespace ALameLlama\Geographer\Collections\Traits;
 
 /**
  * Class ImplementsArray
@@ -19,7 +19,7 @@ trait ImplementsArray
      * @param mixed $offset
      * @return mixed
      */
-    public function offsetExists($offset): bool
+    public function offsetExists(mixed $offset): bool
     {
         return array_key_exists($offset, $this->divisions);
     }
@@ -28,7 +28,7 @@ trait ImplementsArray
      * @param mixed $offset
      * @return mixed
      */
-    public function offsetGet($offset): mixed
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->divisions[$offset];
     }
@@ -38,7 +38,7 @@ trait ImplementsArray
      * @param mixed $value
      * @return mixed
      */
-    public function offsetSet($offset, $value): void
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         $this->divisions[$offset] = $value;
     }
@@ -47,7 +47,7 @@ trait ImplementsArray
      * @param mixed $offset
      * @return void
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset(mixed $offset): void
     {
         unset($this->divisions[$offset]);
     }

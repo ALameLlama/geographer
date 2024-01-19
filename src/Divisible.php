@@ -1,6 +1,6 @@
 <?php
 
-namespace MenaraSolutions\Geographer;
+namespace ALameLlama\Geographer;
 
 use MenaraSolutions\Geographer\Collections\MemberCollection;
 use MenaraSolutions\Geographer\Contracts\ManagerInterface;

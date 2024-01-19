@@ -1,6 +1,6 @@
 <?php
 
-namespace MenaraSolutions\Geographer\Contracts;
+namespace ALameLlama\Geographer\Contracts;
 
 /**
  * Interface PoliglottaInterface

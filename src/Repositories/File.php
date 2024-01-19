@@ -1,6 +1,6 @@
 <?php
 
-namespace MenaraSolutions\Geographer\Repositories;
+namespace ALameLlama\Geographer\Repositories;
 
 use MenaraSolutions\Geographer\Contracts\IdentifiableInterface;
 use MenaraSolutions\Geographer\Contracts\RepositoryInterface;

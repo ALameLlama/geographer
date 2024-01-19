@@ -1,6 +1,6 @@
 <?php
 
-namespace MenaraSolutions\Geographer\Traits;
+namespace ALameLlama\Geographer\Traits;
 
 use MenaraSolutions\Geographer\Contracts\ManagerInterface;
 
