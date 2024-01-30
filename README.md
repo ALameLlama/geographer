@@ -1,11 +1,4 @@
-# Geographer
-[![Build Status](https://travis-ci.org/MenaraSolutions/geographer.svg)](https://travis-ci.org/MenaraSolutions/geographer)
-[![Code Climate](https://codeclimate.com/github/MenaraSolutions/geographer/badges/gpa.svg)](https://codeclimate.com/github/MenaraSolutions/geographer/badges)
-[![Test Coverage](https://codeclimate.com/github/MenaraSolutions/geographer/badges/coverage.svg)](https://codeclimate.com/github/MenaraSolutions/geographer/badges)
-[![Total Downloads](https://poser.pugx.org/menarasolutions/geographer/downloads)](https://packagist.org/packages/menarasolutions/geographer)
-[![Latest Stable Version](https://poser.pugx.org/MenaraSolutions/geographer/v/stable.svg)](https://packagist.org/packages/MenaraSolutions/geographer)
-[![Latest Unstable Version](https://poser.pugx.org/MenaraSolutions/geographer/v/unstable.svg)](https://packagist.org/packages/MenaraSolutions/geographer)
-[![License](https://poser.pugx.org/MenaraSolutions/geographer/license.svg)](https://packagist.org/packages/MenaraSolutions/geographer)
+# This is a fork of https://github.com/MenaraSolutions/geographer with updated PHP 8 support.
 
 Geographer is a PHP library that knows how any country, state or city is called in any language. [Documentation on the official website](https://geographer.au/documentation/php/)
 
@@ -22,7 +15,7 @@ Includes integrations with: Laravel 5, Lumen 5
 To install simply run:
 
 ```
-$ composer require menarasolutions/geographer
+$ composer require alamellama/geographer
 ```
 
 Or add it to `composer.json` manually:
@@ -30,7 +23,7 @@ Or add it to `composer.json` manually:
 ```json
 {
     "require": {
-        "menarasolutions/geographer": "~0.3"
+        "alamellama/geographer": "~0.3"
     }
 }
 ```
@@ -245,22 +238,6 @@ While not a number one priority at this stage, we will try maintain reasonable C
 **Inflating a city based on its Id**
 
 Time: 6 ms, memory: 81056 bytes
-
-## Video tutorials
-
-I've just started a educational YouTube channel that will cover top IT trends in software development and DevOps: [config.sys](https://www.youtube.com/channel/UCIvUJ1iVRjJP_xL0CD7cMpg)
-
-## Todo
-
-1. Add a basic spatial index
-2. Add some unit tests (in addition to existing integration tests)
-3. Add coverage information for language packages
-
-## Projects using Geographer
-
-* [GrammarCI – Typo Detection for developers](https://www.grammarci.com/)
-
-Tell us about yours!
 
 ## Contribution
 
