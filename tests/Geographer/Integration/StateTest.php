@@ -129,7 +129,7 @@ class StateTest extends Test
             if ($count == $isoCounters[$country->getFipsCode()]) {
 
             } else {
-                echo "State count mismatch for " . $country->getFipsCode() . ": ${count} not in ".json_encode($isoCounters[$country->getFipsCode()])." \n";
+                echo "State count mismatch for " . $country->getFipsCode() . ": {$count} not in ".json_encode($isoCounters[$country->getFipsCode()])." \n";
             }
         }
 
@@ -180,7 +180,7 @@ class StateTest extends Test
             if (in_array($count, $isoCounters[$country->getCode()])) {
 
             } else {
-                echo "State count mismatch for " . $country->getCode() . ": ${count} not in ".json_encode($isoCounters[$country->getCode()])." \n";
+                echo "State count mismatch for " . $country->getCode() . ": {$count} not in ".json_encode($isoCounters[$country->getCode()])." \n";
             }
         }
     }
