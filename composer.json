@@ -1,39 +1,44 @@
 {
-    "name": "alamellama/geographer",
-    "type": "library",
-    "description": "A PHP library that knows how any country, state or city is called in any language",
-    "keywords": ["geolocation","localization","geonames","geo"],
-    "homepage": "https://github.com/ALameLlama/geographer",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Nicholas Ciechanowski",
-            "email": "nicholasaciechanowski@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=8.0",
-        "menarasolutions/geographer-data": "^0.1.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9.0",
-        "illuminate/support": "5.*|6.*|7.*|8.*|9.*",
-        "menarasolutions/geographer-da": "0.*",
-        "menarasolutions/geographer-de": "0.*",
-        "menarasolutions/geographer-ru": "0.*",
-        "menarasolutions/geographer-nl": "0.*"
-    },
-    "autoload": {
-        "psr-4": {
-            "ALameLlama\\Geographer\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "ALameLlama\\Geographer\\": "src/",
-            "Tests\\": "tests/Geographer/"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+  "name": "alamellama/geographer",
+  "type": "library",
+  "description": "A PHP library that knows how any country, state or city is called in any language",
+  "keywords": [
+    "geolocation",
+    "localization",
+    "geonames",
+    "geo"
+  ],
+  "homepage": "https://github.com/ALameLlama/geographer",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nicholas Ciechanowski",
+      "email": "nicholasaciechanowski@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.0",
+    "menarasolutions/geographer-data": "^0.1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0",
+    "illuminate/support": "5.*|6.*|7.*|8.*|9.*|10.*|11.*|12.*",
+    "menarasolutions/geographer-da": "0.*",
+    "menarasolutions/geographer-de": "0.*",
+    "menarasolutions/geographer-ru": "0.*",
+    "menarasolutions/geographer-nl": "0.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "ALameLlama\\Geographer\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ALameLlama\\Geographer\\": "src/",
+      "Tests\\": "tests/Geographer/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
