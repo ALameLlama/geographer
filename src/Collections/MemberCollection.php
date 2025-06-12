@@ -102,7 +102,7 @@ class MemberCollection extends \ArrayObject
      * @param  callable|null  $callback
      * @return static
      */
-    public function filter(callable $callback = null)
+    public function filter(?callable $callback = null)
     {
         if ($callback) {
             return new static($this->manager, array_filter($this->divisions, $callback));

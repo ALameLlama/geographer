@@ -69,7 +69,7 @@ abstract class Divisible implements IdentifiableInterface, \ArrayAccess
      * @param string $parentCode
      * @param ManagerInterface $manager
      */
-    public function __construct(array $meta = [], $parentCode = null, ManagerInterface $manager = null)
+    public function __construct(array $meta = [], $parentCode = null, ?ManagerInterface $manager = null)
     {
         $this->meta = $meta;
         $this->parentCode = $parentCode;
@@ -90,7 +90,7 @@ abstract class Divisible implements IdentifiableInterface, \ArrayAccess
      * @param MemberCollection $collection
      * @return void
      */
-    protected function loadMembers(MemberCollection $collection = null)
+    protected function loadMembers(?MemberCollection $collection = null)
     {
         $standard = $this->standard ?: $this->manager->getStandard();
 

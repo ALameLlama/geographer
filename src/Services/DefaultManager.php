@@ -66,7 +66,7 @@ class DefaultManager implements ManagerInterface
      * @param TranslationAgencyInterface $translator
      * @param RepositoryInterface $repository
      */
-    public function __construct($path = null, TranslationAgencyInterface $translator = null, RepositoryInterface $repository= null)
+    public function __construct($path = null, ?TranslationAgencyInterface $translator = null, ?RepositoryInterface $repository = null)
     {
         $this->path = $path ?: self::getDefaultPrefix();
         $this->repository = $repository ?: new File();
