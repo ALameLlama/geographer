@@ -19,7 +19,7 @@ Or add it to `composer.json` manually:
 ```json
 {
     "require": {
-        "alamellama/geographer": "~0.5"
+        "alamellama/geographer": "~1"
     }
 }
 ```
