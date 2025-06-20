@@ -1,6 +1,9 @@
 .idea
 .DS_Store
 
+build/
+.phpunit.result.cache
+
 # Ignore composer generated files
 composer.phar
 composer.lock

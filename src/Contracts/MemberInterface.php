@@ -4,7 +4,7 @@ namespace ALameLlama\Geographer\Contracts;
 
 /**
  * Interface MemberInterface
- * @package MenaraSolutions\FluentGeonames\Contracts
+ * @package ALameLlama\FluentGeonames\Contracts
  */
 interface MemberInterface
 {

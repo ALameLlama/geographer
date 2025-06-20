@@ -4,7 +4,7 @@ namespace ALameLlama\Geographer\Exceptions;
 
 /**
  * Class UnknownFieldException
- * @package MenaraSolutions\FluentGeonames\Exceptions
+ * @package ALameLlama\FluentGeonames\Exceptions
  */
 class UnknownFieldException extends \Exception
 {

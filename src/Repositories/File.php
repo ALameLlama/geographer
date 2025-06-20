@@ -8,7 +8,7 @@ use ALameLlama\Geographer\Earth;
 use ALameLlama\Geographer\Country;
 use ALameLlama\Geographer\Exceptions\FileNotFoundException;
 use ALameLlama\Geographer\Exceptions\MisconfigurationException;
-use MenaraSolutions\Geographer\Helpers\WhereAmI;
+use ALameLlama\Geographer\Helpers\WhereAmI;
 use ALameLlama\Geographer\State;
 use ALameLlama\Geographer\Exceptions\ObjectNotFoundException;
 use ALameLlama\Geographer\City;
@@ -114,6 +114,8 @@ class File implements RepositoryInterface
         if (is_dir(dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'menarasolutions'))
             return dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'menarasolutions';
 
+        if (is_dir(dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'alamellama'))
+            return dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'alamellama';
         // By default, we assume that language package was installed using Composer
         return dirname(dirname(dirname(dirname(__FILE__))));
     }

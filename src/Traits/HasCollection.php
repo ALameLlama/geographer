@@ -4,7 +4,7 @@ namespace ALameLlama\Geographer\Traits;
 
 /**
  * Class HasCollection
- * @package MenaraSolutions\Geographer\Traits
+ * @package ALameLlama\Geographer\Traits
  */
 trait HasCollection
 {

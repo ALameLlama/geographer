@@ -4,7 +4,7 @@ namespace ALameLlama\Geographer\Services\Poliglottas;
 
 /**
  * Class Mandarin
- * @package MenaraSolutions\FluentGeonames\Services\Poliglottas
+ * @package ALameLlama\FluentGeonames\Services\Poliglottas
  */
 class Mandarin extends Base
 {

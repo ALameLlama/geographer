@@ -2,11 +2,9 @@
 
 namespace ALameLlama\Geographer\Services\Poliglottas;
 
-use ALameLlama\Geographer\Contracts\IdentifiableInterface;
-
 /**
  * Class French
- * @package MenaraSolutions\FluentGeonames\Services\Poliglottas
+ * @package ALameLlama\FluentGeonames\Services\Poliglottas
  */
 class French extends Base
 {
@@ -15,9 +13,9 @@ class French extends Base
      */
     protected $code = 'fr';
 
-   /**
-    * @var array
-    */
+    /**
+     * @var array
+     */
     protected $defaultPrepositions = [
         'from' => 'de',
         'in' => 'à'

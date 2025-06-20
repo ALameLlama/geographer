@@ -4,7 +4,7 @@ namespace ALameLlama\Geographer\Collections\Traits;
 
 /**
  * Class ImplementsArray
- * @package MenaraSolutions\Geographer\Collections\Traits
+ * @package ALameLlama\Geographer\Collections\Traits
  */
 trait ImplementsArray
 {

@@ -4,7 +4,7 @@ namespace ALameLlama\Geographer;
 
 /**
  * Class State
- * @package MenaraSolutions\FluentGeonames
+ * @package ALameLlama\FluentGeonames
  */
 class State extends Divisible
 {

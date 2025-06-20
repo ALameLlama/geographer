@@ -6,7 +6,7 @@ use ALameLlama\Geographer\Contracts\IdentifiableInterface;
 
 /**
  * Class Italian
- * @package MenaraSolutions\FluentGeonames\Services\Poliglottas
+ * @package ALameLlama\FluentGeonames\Services\Poliglottas
  */
 class Italian extends Base
 {

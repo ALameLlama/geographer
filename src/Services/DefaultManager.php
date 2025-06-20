@@ -9,7 +9,7 @@ use ALameLlama\Geographer\Repositories\File;
 
 /**
  * Class DefaultManager
- * @package MenaraSolutions\FluentGeonames\Services
+ * @package ALameLlama\FluentGeonames\Services
  */
 class DefaultManager implements ManagerInterface
 {

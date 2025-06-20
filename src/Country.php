@@ -7,7 +7,7 @@ use ALameLlama\Geographer\Services\DefaultManager;
 
 /**
  * Class Country
- * @package MenaraSolutions\FluentGeonames
+ * @package ALameLlama\FluentGeonames
  */
 class Country extends Divisible
 {

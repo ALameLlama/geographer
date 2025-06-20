@@ -4,7 +4,7 @@ namespace ALameLlama\Geographer;
 
 /**
  * Class City
- * @package MenaraSolutions\Geographer
+ * @package ALamewLLama\Geographer
  */
 class City extends Divisible
 {

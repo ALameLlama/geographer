@@ -2,11 +2,9 @@
 
 namespace ALameLlama\Geographer\Services\Poliglottas;
 
-use ALameLlama\Geographer\Contracts\IdentifiableInterface;
-
 /**
  * Class Danish
- * @package MenaraSolutions\FluentGeonames\Services\Poliglottas
+ * @package ALameLlama\FluentGeonames\Services\Poliglottas
  */
 class Danish extends Base
 {

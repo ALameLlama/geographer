@@ -6,10 +6,6 @@ Includes integrations with: Laravel 5, Lumen 5
 
 ![Geographer](https://www.mysenko.com/images/geographer_cover2.jpg)
 
-## Dependencies
-
-* PHP >= 5.5
-
 ## Installation via Composer
 
 To install simply run:
@@ -23,7 +19,7 @@ Or add it to `composer.json` manually:
 ```json
 {
     "require": {
-        "alamellama/geographer": "~0.4"
+        "alamellama/geographer": "~0.5"
     }
 }
 ```

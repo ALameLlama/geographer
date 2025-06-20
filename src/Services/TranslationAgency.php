@@ -20,7 +20,7 @@ use ALameLlama\Geographer\Services\Poliglottas\Ukrainian;
 
 /**
  * Class TranslationAgency
- * @package MenaraSolutions\FluentGeonames\Services
+ * @package ALameLlama\FluentGeonames\Services
  */
 class TranslationAgency implements TranslationAgencyInterface
 {

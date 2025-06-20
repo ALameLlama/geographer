@@ -4,7 +4,7 @@ namespace ALameLlama\Geographer\Services\Poliglottas;
 
 /**
  * Class German
- * @package MenaraSolutions\FluentGeonames\Services\Poliglottas
+ * @package ALameLlama\FluentGeonames\Services\Poliglottas
  */
 class German extends Base
 {

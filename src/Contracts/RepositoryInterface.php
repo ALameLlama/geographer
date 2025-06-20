@@ -4,7 +4,7 @@ namespace ALameLlama\Geographer\Contracts;
 
 /**
  * Interface RepositoryInterface
- * @package MenaraSolutions\Geographer\Contracts
+ * @package ALameLlama\Geographer\Contracts
  */
 interface RepositoryInterface
 {

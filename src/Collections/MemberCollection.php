@@ -10,7 +10,7 @@ use ALameLlama\Geographer\Divisible;
 
 /**
  * Class MemberCollection
- * @package MenaraSolutions\FluentGeonames\Collections
+ * @package ALameLlama\FluentGeonames\Collections
  */
 class MemberCollection extends \ArrayObject
 {

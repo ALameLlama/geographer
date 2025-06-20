@@ -8,7 +8,7 @@ use ALameLlama\Geographer\Exceptions\MisconfigurationException;
 
 /**
  * Class English
- * @package MenaraSolutions\FluentGeonames\Services\Poliglottas
+ * @package ALameLlama\FluentGeonames\Services\Poliglottas
  */
 class English implements PoliglottaInterface
 {

@@ -4,13 +4,10 @@ namespace ALameLlama\Geographer\Repositories;
 
 use ALameLlama\Geographer\Contracts\IdentifiableInterface;
 use ALameLlama\Geographer\Contracts\RepositoryInterface;
-use ALameLlama\Geographer\Earth;
-use ALameLlama\Geographer\Country;
 use ALameLlama\Geographer\Exceptions\FileNotFoundException;
 use ALameLlama\Geographer\Exceptions\MisconfigurationException;
 use ALameLlama\Geographer\State;
 use ALameLlama\Geographer\Exceptions\ObjectNotFoundException;
-use ALameLlama\Geographer\City;
 use ALameLlama\Geographer\Repositories\File;
 
 class Memcached extends File implements RepositoryInterface

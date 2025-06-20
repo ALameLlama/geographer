@@ -3,14 +3,10 @@
 namespace ALameLlama\Geographer\Services\Poliglottas;
 
 use ALameLlama\Geographer\Contracts\TranslationAgencyInterface;
-use ALameLlama\Geographer\Country;
-use ALameLlama\Geographer\State;
-use ALameLlama\Geographer\Earth;
 use ALameLlama\Geographer\Exceptions\MisconfigurationException;
 use ALameLlama\Geographer\Exceptions\FileNotFoundException;
 use ALameLlama\Geographer\Contracts\IdentifiableInterface;
 use ALameLlama\Geographer\Contracts\PoliglottaInterface;
-use ALameLlama\Geographer\City;
 
 /**
  * Class Base

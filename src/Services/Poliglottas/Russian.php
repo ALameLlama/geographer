@@ -2,13 +2,9 @@
 
 namespace ALameLlama\Geographer\Services\Poliglottas;
 
-use ALameLlama\Geographer\Contracts\IdentifiableInterface;
-use ALameLlama\Geographer\Contracts\PoliglottaInterface;
-use ALameLlama\Geographer\Exceptions\MisconfigurationException;
-
 /**
  * Class Russian
- * @package MenaraSolutions\FluentGeonames\Services\Poliglottas
+ * @package ALameLlama\FluentGeonames\Services\Poliglottas
  */
 class Russian extends Base
 {

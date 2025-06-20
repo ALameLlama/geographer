@@ -4,7 +4,7 @@ namespace ALameLlama\Geographer\Exceptions;
 
 /**
  * Class FileNotFoundException
- * @package MenaraSolutions\FluentGeonames\Exceptions
+ * @package ALameLlama\FluentGeonames\Exceptions
  */
 class FileNotFoundException extends \Exception
 {

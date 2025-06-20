@@ -6,7 +6,7 @@ use ALameLlama\Geographer\Contracts\ManagerInterface;
 
 /**
  * Class HasManager
- * @package MenaraSolutions\FluentGeonames\Traits
+ * @package ALameLlama\FluentGeonames\Traits
  */
 trait HasManager
 {

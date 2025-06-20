@@ -4,7 +4,7 @@ namespace ALameLlama\Geographer\Exceptions;
 
 /**
  * Class ObjectNotFoundException
- * @package MenaraSolutions\Geographer\Exceptions
+ * @package ALameLlama\Geographer\Exceptions
  */
 class ObjectNotFoundException extends \Exception 
 {
