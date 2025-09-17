@@ -8,6 +8,39 @@ use ALameLlama\Geographer\Services\DefaultManager;
 /**
  * Class Country
  * @package ALameLlama\FluentGeonames
+ *
+ * @method string getCode()
+ * @method mixed findOneByCode($code)
+ * @method string getCode3()
+ * @method mixed findOneByCode3($code3)
+ * @method string getIsoCode()
+ * @method mixed findOneByIsoCode($isoCode)
+ * @method string getNumericCode()
+ * @method mixed findOneByNumericCode($numericCode)
+ * @method string getGeonamesCode()
+ * @method mixed findOneByGeonamesCode($geonamesCode)
+ * @method string getFipsCode()
+ * @method mixed findOneByFipsCode($fipsCode)
+ * @method float getArea()
+ * @method mixed findOneByArea($area)
+ * @method string getCurrency()
+ * @method mixed findOneByCurrency($currency)
+ * @method string getPhonePrefix()
+ * @method mixed findOneByPhonePrefix($phonePrefix)
+ * @method string getMobileFormat()
+ * @method mixed findOneByMobileFormat($mobileFormat)
+ * @method string getLandlineFormat()
+ * @method mixed findOneByLandlineFormat($landlineFormat)
+ * @method string getTrunkPrefix()
+ * @method mixed findOneByTrunkPrefix($trunkPrefix)
+ * @method int getPopulation()
+ * @method mixed findOneByPopulation($population)
+ * @method string getContinent()
+ * @method mixed findOneByContinent($continent)
+ * @method string getLanguage()
+ * @method mixed findOneByLanguage($language)
+ * @method string getName()
+ * @method mixed findOneByName($name)
  */
 class Country extends Divisible
 {
@@ -40,7 +73,7 @@ class Country extends Divisible
         'population',
         'continent',
         'language' => 'languages.0',
-        'name'
+        'name',
     ];
 
     /**
@@ -57,9 +90,11 @@ class Country extends Divisible
     public function getCapital()
     {
         foreach ($this->getStates() as $state) {
-            if ($capital = $state->findOne([
-                'capital' => true
-            ])) {
+            if (
+                $capital = $state->findOne([
+                    'capital' => true,
+                ])
+            ) {
                 return $capital;
             }
         }
