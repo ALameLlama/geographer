@@ -5,6 +5,14 @@ namespace ALameLlama\Geographer;
 use ALameLlama\Geographer\Collections\MemberCollection;
 use ALameLlama\Geographer\Services\DefaultManager;
 
+/**
+ * Class Earth
+ * @package ALameLlama\Geographer
+ *
+ * @method mixed findOneByCode($code)
+ * @method string getName()
+ * @method mixed findOneByName($name)
+ */
 class Earth extends Divisible
 {
     /**
@@ -22,7 +30,7 @@ class Earth extends Divisible
      */
     protected $exposed = [
         'code',
-        'name'
+        'name',
     ];
 
     /**
@@ -71,7 +79,7 @@ class Earth extends Divisible
     public function getAfrica()
     {
         return $this->find([
-            'continent' => 'AF'
+            'continent' => 'AF',
         ]);
     }
 
@@ -81,7 +89,7 @@ class Earth extends Divisible
     public function getNorthAmerica()
     {
         return $this->find([
-            'continent' => 'NA'
+            'continent' => 'NA',
         ]);
     }
 
@@ -91,7 +99,7 @@ class Earth extends Divisible
     public function getSouthAmerica()
     {
         return $this->find([
-            'continent' => 'SA'
+            'continent' => 'SA',
         ]);
     }
 
@@ -101,7 +109,7 @@ class Earth extends Divisible
     public function getAsia()
     {
         return $this->find([
-            'continent' => 'AS'
+            'continent' => 'AS',
         ]);
     }
 
@@ -111,7 +119,7 @@ class Earth extends Divisible
     public function getEurope()
     {
         return $this->find([
-            'continent' => 'EU'
+            'continent' => 'EU',
         ]);
     }
 
@@ -121,7 +129,7 @@ class Earth extends Divisible
     public function getOceania()
     {
         return $this->find([
-            'continent' => 'OC'
+            'continent' => 'OC',
         ]);
     }
 
@@ -130,7 +138,7 @@ class Earth extends Divisible
      */
     public function withoutMicro()
     {
-        return $this->getMembers()->filter(function($item) {
+        return $this->getMembers()->filter(function ($item) {
             return $item->getPopulation() > 100000;
         });
     }

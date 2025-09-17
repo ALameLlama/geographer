@@ -5,6 +5,21 @@ namespace ALameLlama\Geographer;
 /**
  * Class State
  * @package ALameLlama\FluentGeonames
+ *
+ * @method string getCode()
+ * @method mixed findOneByCode($code)
+ * @method string getFipsCode()
+ * @method mixed findOneByFipsCode($fipsCode)
+ * @method string getIsoCode()
+ * @method mixed findOneByIsoCode($isoCode)
+ * @method string getGeonamesCode()
+ * @method mixed findOneByGeonamesCode($geonamesCode)
+ * @method string getPostCodes()
+ * @method mixed findOneByPostCode($postCode)
+ * @method string getName()
+ * @method mixed findOneByName($name)
+ * @method string getTimezone()
+ * @method mixed findOneByTimezone($timezone)
  */
 class State extends Divisible
 {
@@ -33,7 +48,7 @@ class State extends Divisible
         'geonamesCode' => 'ids.geonames',
         'postCodes' => 'postcodes',
         'name',
-        'timezone'
+        'timezone',
     ];
 
     /**
