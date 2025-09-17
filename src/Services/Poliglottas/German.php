@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Services\Poliglottas;
 
 /**
  * Class German
- * @package ALameLlama\FluentGeonames\Services\Poliglottas
  */
-class German extends Base
+final class German extends Base
 {
     /**
      * @var string
@@ -18,6 +19,6 @@ class German extends Base
      */
     protected $defaultPrepositions = [
         'from' => 'aus',
-        'in' => 'in'
+        'in' => 'in',
     ];
 }

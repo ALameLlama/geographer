@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Services\Poliglottas;
 
 /**
  * Class French
- * @package ALameLlama\FluentGeonames\Services\Poliglottas
  */
-class French extends Base
+final class French extends Base
 {
     /**
      * @var string
@@ -18,6 +19,6 @@ class French extends Base
      */
     protected $defaultPrepositions = [
         'from' => 'de',
-        'in' => 'à'
+        'in' => 'à',
     ];
 }

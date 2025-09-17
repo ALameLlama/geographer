@@ -1,15 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Traits;
 
 /**
  * Class HasCollection
- * @package ALameLlama\Geographer\Traits
  */
 trait HasCollection
 {
     /**
-     * @param array $params
      * @return mixed
      */
     public function find(array $params = [])
@@ -18,7 +18,6 @@ trait HasCollection
     }
 
     /**
-     * @param array $params
      * @return mixed
      */
     public function findOne(array $params = [])

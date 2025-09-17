@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests;
 
 trait AnalyzesPerformance
@@ -24,19 +26,13 @@ trait AnalyzesPerformance
      */
     protected $startTimestamp;
 
-    /**
-     * @return void
-     */
-    public function performanceHook()
+    public function performanceHook(): void
     {
         $this->memoryUsage = memory_get_usage();
         $this->startTimestamp = microtime(true);
     }
 
-    /**
-     * @return void
-     */
-    public function performanceCheck()
+    public function performanceCheck(): void
     {
         $this->assertTrue((microtime(true) - $this->startTimestamp) < $this->performanceTimeGoal);
         $this->assertTrue(memory_get_usage() - $this->memoryUsage < $this->performanceMemoryGoal);

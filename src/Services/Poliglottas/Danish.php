@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Services\Poliglottas;
 
 /**
  * Class Danish
- * @package ALameLlama\FluentGeonames\Services\Poliglottas
  */
-class Danish extends Base
+final class Danish extends Base
 {
     /**
      * @var string
@@ -18,6 +19,6 @@ class Danish extends Base
      */
     protected $defaultPrepositions = [
         'from' => 'fra',
-        'in' => 'i'
+        'in' => 'i',
     ];
 }

@@ -1,16 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Services\Poliglottas;
 
-use ALameLlama\Geographer\Contracts\TranslationAgencyInterface;
-use ALameLlama\Geographer\Exceptions\MisconfigurationException;
-use ALameLlama\Geographer\Exceptions\FileNotFoundException;
 use ALameLlama\Geographer\Contracts\IdentifiableInterface;
 use ALameLlama\Geographer\Contracts\PoliglottaInterface;
+use ALameLlama\Geographer\Contracts\TranslationAgencyInterface;
+use ALameLlama\Geographer\Exceptions\FileNotFoundException;
+use ALameLlama\Geographer\Exceptions\MisconfigurationException;
 
 /**
  * Class Base
- * @package App\Services\Poliglottas
  */
 abstract class Base implements PoliglottaInterface
 {
@@ -18,11 +19,6 @@ abstract class Base implements PoliglottaInterface
      * @var string
      */
     protected $code;
-
-    /**
-     * @var TranslationAgencyInterface
-     */
-    protected $agency;
 
     /**
      * @var array
@@ -36,22 +32,18 @@ abstract class Base implements PoliglottaInterface
 
     /**
      * Base constructor.
-     * @param TranslationAgencyInterface $agency
      */
-    public function __construct(TranslationAgencyInterface $agency)
-    {
-        $this->agency = $agency;
-    }
+    public function __construct(protected TranslationAgencyInterface $agency) {}
 
     /**
-     * @param IdentifiableInterface $subject
-     * @param string $form
-     * @param bool $preposition
+     * @param  string  $form
+     * @param  bool  $preposition
      * @return string
+     *
      * @throws MisconfigurationException
      */
     public function translate(IdentifiableInterface $subject, $form = 'default', $preposition = true)
-    {   
+    {
         if (! method_exists($this, 'inflict' . ucfirst($form))) {
             throw new MisconfigurationException('Language ' . $this->code . ' doesn\'t inflict to ' . $form);
         }
@@ -59,27 +51,34 @@ abstract class Base implements PoliglottaInterface
         $meta = $this->fromDictionary($subject);
         $result = $this->extract($meta, $subject->expectsLongNames(), $form, true);
 
-	    if ($result && $preposition) return $result;
-	    if ($result && ! $preposition) return mb_substr($result, mb_strpos($result, ' '));
+        if ($result && $preposition) {
+            return $result;
+        }
+        if ($result && ! $preposition) {
+            return mb_substr($result, mb_strpos($result, ' '));
+        }
 
         $result = $this->inflictDefault($meta, $subject->expectsLongNames());
-	    if ($form == 'default') return $result;
+        if ($form === 'default') {
+            return $result;
+        }
 
-	    $result = $this->{'inflict' . ucfirst($form)}($result);
-        if ($preposition) $result = $this->getPreposition($form, $result) . ' ' . $result;
+        $result = $this->{'inflict' . ucfirst($form)}($result);
+        if ($preposition) {
+            return $this->getPreposition($form, $result) . ' ' . $result;
+        }
 
         return $result;
     }
 
     /**
-     * @param IdentifiableInterface $subject
      * @return array
      */
     protected function fromDictionary(IdentifiableInterface $subject)
     {
         try {
             $translations = $this->agency->getRepository()->getTranslations($subject, $this->code);
-        } catch (FileNotFoundException $e) {
+        } catch (FileNotFoundException) {
             return $subject->getMeta();
         }
 
@@ -87,8 +86,6 @@ abstract class Base implements PoliglottaInterface
     }
 
     /**
-     * @param array $meta
-     * @param $long
      * @return string
      */
     protected function inflictDefault(array $meta, $long)
@@ -97,26 +94,25 @@ abstract class Base implements PoliglottaInterface
     }
 
     /**
-     * @param string $template
+     * @param  string  $template
      * @return string
      */
     protected function inflictIn($template)
     {
-	    return $template;
-    }
-
-    /**
-     * @param string $template
-     * @return string
-     */
-    protected function inflictFrom($template)
-    {   
         return $template;
     }
 
     /**
-     * @param $form
-     * @param string $result
+     * @param  string  $template
+     * @return string
+     */
+    protected function inflictFrom($template)
+    {
+        return $template;
+    }
+
+    /**
+     * @param  string  $result
      * @return string
      */
     protected function getPreposition($form, $result = null)
@@ -125,18 +121,18 @@ abstract class Base implements PoliglottaInterface
     }
 
     /**
-     * @param array $meta
-     * @param bool $long
-     * @param $form
-     * @param bool $fallback
+     * @param  bool  $long
+     * @param  bool  $fallback
      * @return mixed
      */
     protected function extract(array $meta, $long, $form, $fallback = false)
     {
         $variants = [];
-        $keys = $long ? [ 'long', 'short '] : [ 'short', 'long' ];
+        $keys = $long ? ['long', 'short '] : ['short', 'long'];
 
-	    if (! isset($meta[$keys[0]][$form]) && ! $fallback) return false;
+        if (! isset($meta[$keys[0]][$form]) && ! $fallback) {
+            return false;
+        }
 
         if (isset($meta[$keys[0]][$form])) {
             $variants[] = $meta[$keys[0]][$form];
@@ -146,6 +142,6 @@ abstract class Base implements PoliglottaInterface
             $variants[] = $meta[$keys[1]][$form];
         }
 
-        return !empty($variants) ? $variants[0] : false;
+        return $variants === [] ? false : $variants[0];
     }
 }

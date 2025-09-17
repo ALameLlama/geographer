@@ -1,16 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Contracts;
 
 /**
  * Interface TranslationRepositoryInterface
- * @package ALameLlama\FluentGeonames\Contracts
  */
 interface TranslationAgencyInterface
 {
     /**
-     * @param IdentifiableInterface $subject
-     * @param string $language
+     * @param  string  $language
      * @return string
      */
     public function translate(IdentifiableInterface $subject, $language);
@@ -21,7 +21,7 @@ interface TranslationAgencyInterface
     public function getRepository();
 
     /**
-     * @param RepositoryInterface $repository
+     * @param  RepositoryInterface  $repository
      * @return TranslationAgencyInterface
      */
     public function setRepository($repository);
@@ -32,7 +32,6 @@ interface TranslationAgencyInterface
     public function getSupportedLanguages();
 
     /**
-     * @param $form
      * @return TranslationAgencyInterface
      */
     public function setForm($form);

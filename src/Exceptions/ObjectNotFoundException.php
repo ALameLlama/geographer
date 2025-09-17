@@ -1,12 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Exceptions;
+
+use Exception;
 
 /**
  * Class ObjectNotFoundException
- * @package ALameLlama\Geographer\Exceptions
  */
-class ObjectNotFoundException extends \Exception 
-{
-    
-}
+final class ObjectNotFoundException extends Exception {}

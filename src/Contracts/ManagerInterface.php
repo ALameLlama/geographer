@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Contracts;
 
 /**
  * Interface ManagerInterface
- * @package ALameLlama\FluentGeonames\Contracts
  */
 interface ManagerInterface
 {
@@ -14,18 +15,17 @@ interface ManagerInterface
     public function getStoragePath();
 
     /**
-     * @param string $path
+     * @param  string  $path
      * @return ManagerInterface
      */
     public function setStoragePath($path);
-    
+
     /**
      * @return TranslationAgencyInterface
      */
     public function getTranslator();
 
     /**
-     * @param TranslationAgencyInterface $translator
      * @return ManagerInterface
      */
     public function setTranslator(TranslationAgencyInterface $translator);
@@ -36,13 +36,12 @@ interface ManagerInterface
     public function getRepository();
 
     /**
-     * @param RepositoryInterface $repository
      * @return ManagerInterface
      */
     public function setRepository(RepositoryInterface $repository);
 
     /**
-     * @param string $form
+     * @param  string  $form
      */
     public function setForm($form);
 
@@ -52,7 +51,7 @@ interface ManagerInterface
     public function getLocale();
 
     /**
-     * @param string $language
+     * @param  string  $language
      * @return ManagerInterface
      */
     public function setLocale($language);
@@ -83,7 +82,7 @@ interface ManagerInterface
     public function expectsLongNames();
 
     /**
-     * @param string $standard
+     * @param  string  $standard
      * @return $this
      */
     public function setStandard($standard);

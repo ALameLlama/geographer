@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Traits;
 
 use ALameLlama\Geographer\Contracts\ManagerInterface;
 
 /**
  * Class HasManager
- * @package ALameLlama\FluentGeonames\Traits
  */
 trait HasManager
 {
@@ -19,7 +20,6 @@ trait HasManager
     }
 
     /**
-     * @param ManagerInterface $manager
      * @return $this
      */
     public function setManager(ManagerInterface $manager)
@@ -30,7 +30,7 @@ trait HasManager
     }
 
     /**
-     * @param string $locale
+     * @param  string  $locale
      * @return $this
      */
     public function setLocale($locale)
@@ -41,7 +41,7 @@ trait HasManager
     }
 
     /**
-     * @param string $standard
+     * @param  string  $standard
      * @return $this
      */
     public function setStandard($standard)
@@ -53,7 +53,7 @@ trait HasManager
     }
 
     /**
-     * @param string $form
+     * @param  string  $form
      * @return $this
      */
     public function inflict($form)

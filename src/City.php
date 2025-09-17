@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer;
 
 /**
  * Class City
- * @package ALamewLLama\Geographer
  *
  * @method string getCode()
  * @method mixed findOneByCode($code)
@@ -21,12 +22,12 @@ namespace ALameLlama\Geographer;
  * @method bool getCapital()
  * @method mixed findOneByCapital($capital)
  */
-class City extends Divisible
+final class City extends Divisible
 {
     /**
      * @var string
      */
-    protected $memberClass = null;
+    protected $memberClass;
 
     /**
      * @var string

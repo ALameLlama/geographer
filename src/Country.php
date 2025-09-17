@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer;
 
 use ALameLlama\Geographer\Collections\MemberCollection;
@@ -7,7 +9,6 @@ use ALameLlama\Geographer\Services\DefaultManager;
 
 /**
  * Class Country
- * @package ALameLlama\FluentGeonames
  *
  * @method string getCode()
  * @method mixed findOneByCode($code)
@@ -42,7 +43,7 @@ use ALameLlama\Geographer\Services\DefaultManager;
  * @method string getName()
  * @method mixed findOneByName($name)
  */
-class Country extends Divisible
+final class Country extends Divisible
 {
     /**
      * @var string
@@ -77,9 +78,17 @@ class Country extends Divisible
     ];
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    public function getParentCode()
+    public static function build($id, $config = null)
+    {
+        $config = $config ?: new DefaultManager;
+        $earth = (new Earth)->setManager($config);
+
+        return $earth->findOneByCode($id);
+    }
+
+    public function getParentCode(): string
     {
         return 'SOL-III';
     }
@@ -98,6 +107,8 @@ class Country extends Divisible
                 return $capital;
             }
         }
+
+        return null;
     }
 
     /**
@@ -106,16 +117,5 @@ class Country extends Divisible
     public function getStates()
     {
         return $this->getMembers();
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public static function build($id, $config = null)
-    {
-        $config = $config ?: new DefaultManager();
-        $earth = (new Earth())->setManager($config);
-
-        return $earth->findOneByCode($id);
     }
 }

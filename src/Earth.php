@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer;
 
 use ALameLlama\Geographer\Collections\MemberCollection;
@@ -7,23 +9,19 @@ use ALameLlama\Geographer\Services\DefaultManager;
 
 /**
  * Class Earth
- * @package ALameLlama\Geographer
  *
  * @method mixed findOneByCode($code)
  * @method string getName()
  * @method mixed findOneByName($name)
  */
-class Earth extends Divisible
+final class Earth extends Divisible
 {
     /**
      * @var string
      */
     protected $memberClass = Country::class;
 
-    /**
-     * @var null
-     */
-    protected static $parentClass = null;
+    protected static $parentClass;
 
     /**
      * @var array
@@ -34,6 +32,16 @@ class Earth extends Divisible
     ];
 
     /**
+     * {@inheritdoc}
+     */
+    public static function build($id, $config = null): static
+    {
+        $config = $config ?: new DefaultManager;
+
+        return new self([], null, $config);
+    }
+
+    /**
      * @return MemberCollection
      */
     public function getCountries()
@@ -41,33 +49,21 @@ class Earth extends Divisible
         return $this->getMembers();
     }
 
-    /**
-     * @return string
-     */
-    public function getShortName()
+    public function getShortName(): string
     {
         return 'Earth';
     }
 
-    /**
-     * @return string
-     */
-    public function getLongName()
+    public function getLongName(): string
     {
         return 'The Blue Marble';
     }
 
-    /**
-     * @return string
-     */
-    public function getCode()
+    public function getCode(): string
     {
         return 'SOL-III';
     }
 
-    /**
-     * @return null
-     */
     public function getParentCode()
     {
         return null;
@@ -136,19 +132,8 @@ class Earth extends Divisible
     /**
      * @return static
      */
-    public function withoutMicro()
+    public function withoutMicro(): MemberCollection
     {
-        return $this->getMembers()->filter(function ($item) {
-            return $item->getPopulation() > 100000;
-        });
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public static function build($id, $config = null)
-    {
-        $config = $config ?: new DefaultManager();
-        return new static([], null, $config);
+        return $this->getMembers()->filter(fn ($item): bool => $item->getPopulation() > 100000);
     }
 }

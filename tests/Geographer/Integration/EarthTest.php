@@ -1,22 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests;
 
 use ALameLlama\Geographer\Collections\MemberCollection;
 use ALameLlama\Geographer\Country;
-use ALameLlama\Geographer\Exceptions\MisconfigurationException;
 use ALameLlama\Geographer\Earth;
 
-class EarthTest extends Test
+use function count;
+use function is_array;
+use function strlen;
+
+final class EarthTest extends Test
 {
     const TOTAL_COUNTRIES = 249;
-    
+
     /**
      * @test
      */
-    public function planet_class_loads_default_countries()
+    public function planet_class_loads_default_countries(): void
     {
-        $earth = new Earth();
+        $earth = new Earth;
         $countries = $earth->getCountries();
         $this->assertTrue(is_array($countries->toArray()));
         $this->assertEquals(self::TOTAL_COUNTRIES, count($countries));
@@ -26,11 +31,11 @@ class EarthTest extends Test
     /**
      * @test
      */
-    public function can_get_country_names_and_iso_codes_for_all_countries()
+    public function can_get_country_names_and_iso_codes_for_all_countries(): void
     {
-        $earth = new Earth();
+        $earth = new Earth;
         $countries = $earth->getCountries();
-        foreach($countries as $country) {
+        foreach ($countries as $country) {
             $this->assertNotEmpty($country->getShortName());
             $this->assertNotEmpty($country->getLongName());
             $this->assertEquals(2, strlen($country->getCode()));
@@ -41,22 +46,22 @@ class EarthTest extends Test
     /**
      * @test
      */
-    public function can_get_translated_country_names()
+    public function can_get_translated_country_names(): void
     {
-        $earth = new Earth();
+        $earth = new Earth;
         $country = $earth->findOne(['code' => 'ru']);
         $original = $country->getLongName();
         $country->setLocale('ru');
-        $this->assertTrue(!empty($country->getLongName()));
+        $this->assertTrue(! empty($country->getLongName()));
         $this->assertNotEquals($original, $country->getLongName());
     }
 
     /**
      * @test
      */
-    public function can_find_a_country_by_code()
+    public function can_find_a_country_by_code(): void
     {
-        $earth = new Earth();
+        $earth = new Earth;
         $russia = $earth->findOne(['code' => 'RU']);
         $this->assertTrue($russia instanceof Country);
         $this->assertEquals('RU', $russia->getCode());
@@ -65,14 +70,13 @@ class EarthTest extends Test
     /**
      * @test
      */
-    public function can_get_country_lists_by_continents()
+    public function can_get_country_lists_by_continents(): void
     {
-        $earth = new Earth();
+        $earth = new Earth;
 
         $continents = ['Europe', 'Oceania', 'NorthAmerica', 'SouthAmerica', 'Asia', 'Africa'];
 
-        foreach ($continents as $continent)
-        {
+        foreach ($continents as $continent) {
             $continent = $earth->{'get' . $continent}();
             $this->assertInstanceOf(MemberCollection::class, $continent);
             $this->assertTrue(is_array($continent->toArray()));
@@ -82,15 +86,13 @@ class EarthTest extends Test
     /**
      * @test
      */
-    public function can_filter_the_countries()
+    public function can_filter_the_countries(): void
     {
-        $earth = new Earth();
+        $earth = new Earth;
         $countries = $earth->getCountries();
         $count = $countries->count();
 
-        $countries = $countries->filter(function($item) {
-            return $item->getPopulation() > 50000;
-        });
+        $countries = $countries->filter(fn ($item): bool => $item->getPopulation() > 50000);
 
         $this->assertNotEquals($count, $countries->count());
     }

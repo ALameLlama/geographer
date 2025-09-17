@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Services;
 
 use ALameLlama\Geographer\Contracts\IdentifiableInterface;
@@ -9,73 +11,63 @@ use ALameLlama\Geographer\Contracts\TranslationAgencyInterface;
 use ALameLlama\Geographer\Exceptions\MisconfigurationException;
 use ALameLlama\Geographer\Services\Poliglottas\Danish;
 use ALameLlama\Geographer\Services\Poliglottas\Dutch;
+use ALameLlama\Geographer\Services\Poliglottas\English;
 use ALameLlama\Geographer\Services\Poliglottas\French;
 use ALameLlama\Geographer\Services\Poliglottas\German;
+use ALameLlama\Geographer\Services\Poliglottas\Italian;
 use ALameLlama\Geographer\Services\Poliglottas\Mandarin;
 use ALameLlama\Geographer\Services\Poliglottas\Russian;
-use ALameLlama\Geographer\Services\Poliglottas\English;
 use ALameLlama\Geographer\Services\Poliglottas\Spanish;
-use ALameLlama\Geographer\Services\Poliglottas\Italian;
 use ALameLlama\Geographer\Services\Poliglottas\Ukrainian;
 
 /**
  * Class TranslationAgency
- * @package ALameLlama\FluentGeonames\Services
  */
-class TranslationAgency implements TranslationAgencyInterface
+final class TranslationAgency implements TranslationAgencyInterface
 {
-    /**
-     * @var string
-     */
-    protected $basePath;
-
-    /**
-     * @var RepositoryInterface
-     */
-    protected $repository;
-
-    /**
-     * @var string
-     */
-    protected $form = 'default';
-
-    /**
-     * @var array
-     */
-    protected $inflictsTo = [];
-
-    /**
-     * @var bool
-     */
-    protected $prepositions = true;
-
     /**
      * Constants for available languages
      */
     const LANG_RUSSIAN = 'ru';
+
     const LANG_ENGLISH = 'en';
+
     const LANG_SPANISH = 'es';
+
     const LANG_ITALIAN = 'it';
+
     const LANG_FRENCH = 'fr';
+
     const LANG_CHINESE = 'zh';
+
     const LANG_UKRAINIAN = 'uk';
+
     const LANG_GERMAN = 'de';
+
     const LANG_DUTCH = 'nl';
+
     const LANG_DANISH = 'da';
 
     /**
      * Constants for available forms
      */
     const FORM_DEFAULT = 'default';
+
     const FORM_IN = 'in';
+
     const FORM_FROM = 'from';
 
     /**
-     * List of available translators
-     *
-     * @var array
+     * @var string
      */
-    protected $languages = [
+    private $form = 'default';
+
+    private bool $prepositions = true;
+
+    /**
+     * List of available translators
+     */
+    private array $languages = [
         self::LANG_RUSSIAN => Russian::class,
         self::LANG_ENGLISH => English::class,
         self::LANG_SPANISH => Spanish::class,
@@ -91,24 +83,18 @@ class TranslationAgency implements TranslationAgencyInterface
     /**
      * @var array PoliglottaInterface
      */
-    protected $translators = [];
+    private array $translators = [];
 
     /**
      * TranslationRepository constructor.
-     * @param string $basePath
-     * @param RepositoryInterface $repository
      */
-    public function __construct($basePath, RepositoryInterface $repository)
-    {
-        $this->basePath = $basePath;
-        $this->repository = $repository;
-    }
+    public function __construct(private RepositoryInterface $repository) {}
 
     /**
-     * @param string $form
+     * @param  string  $form
      * @return $this
      */
-    public function setForm($form)
+    public function setForm($form): static
     {
         $this->form = $form;
 
@@ -118,7 +104,7 @@ class TranslationAgency implements TranslationAgencyInterface
     /**
      * @return $this
      */
-    public function includePrepositions()
+    public function includePrepositions(): static
     {
         $this->prepositions = true;
 
@@ -128,7 +114,7 @@ class TranslationAgency implements TranslationAgencyInterface
     /**
      * @return $this
      */
-    public function excludePrepositions()
+    public function excludePrepositions(): static
     {
         $this->prepositions = false;
 
@@ -136,8 +122,7 @@ class TranslationAgency implements TranslationAgencyInterface
     }
 
     /**
-     * @param IdentifiableInterface $subject
-     * @param string $language
+     * @param  string  $language
      * @return string
      */
     public function translate(IdentifiableInterface $subject, $language = 'en')
@@ -148,11 +133,11 @@ class TranslationAgency implements TranslationAgencyInterface
     }
 
     /**
-     * @param string $language
      * @return PoliglottaInterface
+     *
      * @throws MisconfigurationException
      */
-    public function getTranslator($language)
+    public function getTranslator(string $language)
     {
         if (! isset($this->languages[$language])) {
             throw new MisconfigurationException('No hablo ' . $language . ', sorry');
@@ -168,16 +153,16 @@ class TranslationAgency implements TranslationAgencyInterface
     /**
      * @return RepositoryInterface $repository
      */
-    public function getRepository()
+    public function getRepository(): RepositoryInterface
     {
         return $this->repository;
     }
 
     /**
-     * @param RepositoryInterface $repository
+     * @param  RepositoryInterface  $repository
      * @return TranslationAgencyInterface
      */
-    public function setRepository($repository)
+    public function setRepository($repository): static
     {
         $this->repository = $repository;
 

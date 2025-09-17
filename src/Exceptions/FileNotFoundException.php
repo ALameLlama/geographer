@@ -1,12 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Exceptions;
+
+use Exception;
 
 /**
  * Class FileNotFoundException
- * @package ALameLlama\FluentGeonames\Exceptions
  */
-class FileNotFoundException extends \Exception
-{
-
-}
+final class FileNotFoundException extends Exception {}

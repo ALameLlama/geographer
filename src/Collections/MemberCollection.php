@@ -1,25 +1,26 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Collections;
+
+use const SORT_REGULAR;
 
 use ALameLlama\Geographer\Collections\Traits\ImplementsArray;
 use ALameLlama\Geographer\Contracts\ManagerInterface;
+use ALameLlama\Geographer\Divisible;
 use ALameLlama\Geographer\Exceptions\ObjectNotFoundException;
 use ALameLlama\Geographer\Traits\HasManager;
-use ALameLlama\Geographer\Divisible;
+use ArrayObject;
+
+use function array_slice;
 
 /**
  * Class MemberCollection
- * @package ALameLlama\FluentGeonames\Collections
  */
-class MemberCollection extends \ArrayObject
+final class MemberCollection extends ArrayObject
 {
     use HasManager, ImplementsArray;
-    
-    /**
-     * @var array $divisions
-     */
-    private $divisions = [];
 
     /**
      * @var ManagerInterface
@@ -27,22 +28,24 @@ class MemberCollection extends \ArrayObject
     protected $manager;
 
     /**
+     * @var array
+     */
+    private $divisions = [];
+
+    /**
      * MemberCollection constructor.
-     * @param ManagerInterface $config
-     * @param array $divisions
+     *
+     * @param  array  $divisions
      */
     public function __construct(ManagerInterface $config, $divisions = [])
     {
         parent::__construct();
 
         $this->manager = $config;
-	    $this->divisions = $divisions;
+        $this->divisions = $divisions;
     }
-    
-    /**
-     * @return array
-     */
-    public function toArray()
+
+    public function toArray(): array
     {
         $array = [];
 
@@ -54,89 +57,60 @@ class MemberCollection extends \ArrayObject
     }
 
     /**
-     * @param string $key
-     * @return array
+     * @param  string  $key
      */
-    public function pluck($key)
+    public function pluck($key): array
     {
-        return array_map(function($division) use ($key) {
-            return isset($division[$key]) ? $division[$key] : null;
-        }, $this->toArray());
+        return array_map(fn (array $division) => $division[$key] ?? null, $this->toArray());
     }
 
-    /**
-     * @return mixed
-     */
-    public function first()
+    public function first(): mixed
     {
         return reset($this->divisions);
     }
 
     /**
-     * @param $key
      * @return mixed
+     *
      * @throws ObjectNotFoundException
      */
     public function get($key)
     {
-        if (! isset($this->divisions[$key])) throw new ObjectNotFoundException('Unknown code');
+        if (! isset($this->divisions[$key])) {
+            throw new ObjectNotFoundException('Unknown code');
+        }
 
         return $this->divisions[$key];
     }
 
     /**
-     * @param $division
-     * @param string|int $key
+     * @param  string|int  $key
      * @return $this
      */
-    public function add($division, $key)
+    public function add($division, $key): static
     {
         $this->divisions[$key] = $division;
 
         return $this;
     }
-    
+
     /**
      * Run a filter over each of the items.
-     *
-     * @param  callable|null  $callback
-     * @return static
      */
-    public function filter(?callable $callback = null)
+    public function filter(?callable $callback = null): static
     {
         if ($callback) {
-            return new static($this->manager, array_filter($this->divisions, $callback));
+            return new self($this->manager, array_filter($this->divisions, $callback));
         }
 
-        return new static($this->manager, array_filter($this->divisions));
+        return new self($this->manager, array_filter($this->divisions));
     }
 
-    /**
-     * @param Divisible $member
-     * @param array $params
-     * @return bool
-     */
-    private function match(Divisible $member, array $params)
-    {
-        $memberArray = $member->toArray();
-        $match = true;
-
-        foreach ($params as $key => $value) {
-            if (!isset($memberArray[$key]) || strcasecmp($memberArray[$key], $value) != 0) $match = false;
-        }
-
-        return $match;
-    }
-
-    /**
-     * @param array $params
-     * @return MemberCollection
-     */
-    public function find(array $params = [])
+    public function find(array $params = []): self
     {
         $members = new self($this->manager);
 
-        foreach($this->divisions as $key => $member) {
+        foreach ($this->divisions as $key => $member) {
             if ($this->match($member, $params)) {
                 $members->add($member, $key);
             }
@@ -146,27 +120,25 @@ class MemberCollection extends \ArrayObject
     }
 
     /**
-     * @param array $params
      * @return Divisible|bool
      */
     public function findOne(array $params = [])
     {
-        if (array_keys($params) == ['code']) {
+        if (array_keys($params) === ['code']) {
             return $this->get(strtoupper($params['code']));
         }
 
         return $this->find($params)->first();
     }
-    
+
     /**
      * Sort the collection
      *
-     * @param  string $field
-     * @param  int   $options
+     * @param  string  $field
+     * @param  int  $options
      * @param  bool  $descending
-     * @return static
      */
-    public function sortBy($field, $options = SORT_REGULAR, $descending = false)
+    public function sortBy($field, $options = SORT_REGULAR, $descending = false): static
     {
         $results = [];
 
@@ -177,12 +149,12 @@ class MemberCollection extends \ArrayObject
 
         $descending ? arsort($results, $options)
                     : asort($results, $options);
-        
+
         foreach (array_keys($results) as $key) {
             $results[$key] = $this->divisions[$key];
         }
 
-        return new static($this->manager, $results);
+        return new self($this->manager, $results);
     }
 
     /**
@@ -190,11 +162,10 @@ class MemberCollection extends \ArrayObject
      *
      * @param  int  $offset
      * @param  int  $length
-     * @return static
      */
-    public function slice($offset, $length = null)
+    public function slice($offset, $length = null): static
     {
-        return new static($this->manager, array_slice($this->divisions, $offset, $length, true));
+        return new self($this->manager, array_slice($this->divisions, $offset, $length, true));
     }
 
     /**
@@ -206,7 +177,24 @@ class MemberCollection extends \ArrayObject
     public function merge($divisions)
     {
         return ($divisions instanceof MemberCollection)
-		? $divisions->merge($this->divisions)
-		: new static($this->manager, array_merge($this->divisions, $divisions));
+        ? $divisions->merge($this->divisions)
+        : new self($this->manager, array_merge($this->divisions, $divisions));
+    }
+
+    /**
+     * @return bool
+     */
+    private function match(Divisible $member, array $params)
+    {
+        $memberArray = $member->toArray();
+        $match = true;
+
+        foreach ($params as $key => $value) {
+            if (! isset($memberArray[$key]) || strcasecmp($memberArray[$key], $value) !== 0) {
+                $match = false;
+            }
+        }
+
+        return $match;
     }
 }

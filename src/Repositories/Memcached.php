@@ -1,26 +1,33 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Repositories;
+
+use const DIRECTORY_SEPARATOR;
 
 use ALameLlama\Geographer\Contracts\IdentifiableInterface;
 use ALameLlama\Geographer\Contracts\RepositoryInterface;
 use ALameLlama\Geographer\Exceptions\FileNotFoundException;
 use ALameLlama\Geographer\Exceptions\MisconfigurationException;
-use ALameLlama\Geographer\State;
 use ALameLlama\Geographer\Exceptions\ObjectNotFoundException;
-use ALameLlama\Geographer\Repositories\File;
+use ALameLlama\Geographer\State;
 
-class Memcached extends File implements RepositoryInterface
+final class Memcached extends File implements RepositoryInterface
 {
+    public $prefix;
+
     /**
      * @var Memcached
      */
-    protected $client;
+    private $client;
 
     /**
      * Memcached constructor.
-     * @param string $prefix
-     * @param Memcached $client
+     *
+     * @param  string  $prefix
+     * @param  Memcached  $client
+     *
      * @throws MisconfigurationException
      */
     public function __construct($prefix = null, $client = null)
@@ -32,7 +39,7 @@ class Memcached extends File implements RepositoryInterface
         }
 
         if (! $client) {
-            $client = new \Memcached();
+            $client = new \Memcached;
             $client->addServer('127.0.0.1', 11211);
         }
 
@@ -40,72 +47,50 @@ class Memcached extends File implements RepositoryInterface
     }
 
     /**
-     * @param string $class
-     * @param array $params
+     * @param  string  $class
      * @return array
      */
     public function getData($class, array $params)
     {
         $path = $this->getPath($class, $this->prefix, $params);
-        $data = $this->client->get($path);
-
-        if ($this->client->getResultCode() == \Memcached::RES_NOTFOUND) {
-            $data = parent::getData($class, $params);
+        if ($this->client->getResultCode() === \Memcached::RES_NOTFOUND) {
+            return parent::getData($class, $params);
         }
 
-        return $data;
+        return $this->client->get($path);
     }
 
     /**
-     * @param $path
-     * @param $id
-     * @return mixed
-     * @throws ObjectNotFoundException
-     */
-    protected function getCodeFromIndex($path, $id)
-    {
-        $index = $this->client->get($path);
-
-        if ($this->client->getResultCode() == \Memcached::RES_NOTFOUND) {
-            $index = $this->loadJson($path);
-            $this->client->set($path, $index, 0);
-        }
-
-        if (! isset($index[$id])) throw new ObjectNotFoundException('Cannot find object with id ' . $id);
-
-        return $index[$id];
-    }
-
-    /**
-     * @param int $id
-     * @param string $class
+     * @param  int  $id
+     * @param  string  $class
      * @return array
+     *
      * @throws ObjectNotFoundException
      */
     public function indexSearch($id, $class)
     {
         $code = $this->getCodeFromIndex($this->prefix . DIRECTORY_SEPARATOR . self::$indexes[$class], $id);
 
-        $key = ($class == State::class) ? 'parentCode' : 'code';
-        $path = $this->getPath($class, $this->prefix, [ $key => $code ]);
+        $key = ($class === State::class) ? 'parentCode' : 'code';
+        $path = $this->getPath($class, $this->prefix, [$key => $code]);
 
         $cache = $this->client->get($path);
 
-        if ($this->client->getResultCode() == \Memcached::RES_NOTFOUND) {
+        if ($this->client->getResultCode() === \Memcached::RES_NOTFOUND) {
             $cache = $this->loadJson($path);
             $this->client->set($path, $cache, 0);
         }
 
         foreach ($cache as $member) {
-            if ($member['ids']['geonames'] == $id) return $member;
+            if ($member['ids']['geonames'] === $id) {
+                return $member;
+            }
         }
 
         throw new ObjectNotFoundException('Cannot find meta for division #' . $id);
     }
-    
+
     /**
-     * @param IdentifiableInterface $subject
-     * @param $language
      * @return array
      */
     public function getTranslations(IdentifiableInterface $subject, $language)
@@ -113,18 +98,40 @@ class Memcached extends File implements RepositoryInterface
         $path = $this->getTranslationsPath($subject, $language);
 
         $this->client->get($path);
-        if ($this->client->getResultCode() == \Memcached::RES_NOTFOUND) $this->loadTranslations($path);
+        if ($this->client->getResultCode() === \Memcached::RES_NOTFOUND) {
+            $this->loadTranslations($path);
+        }
 
-        $translation = $this->client->get($path . $subject->getCode()) ?: null;
-
-        return $translation;
+        return $this->client->get($path . $subject->getCode()) ?: null;
     }
 
     /**
-     * @param string $path
+     * @return mixed
+     *
+     * @throws ObjectNotFoundException
+     */
+    protected function getCodeFromIndex($path, $id)
+    {
+        $index = $this->client->get($path);
+
+        if ($this->client->getResultCode() === \Memcached::RES_NOTFOUND) {
+            $index = $this->loadJson($path);
+            $this->client->set($path, $index, 0);
+        }
+
+        if (! isset($index[$id])) {
+            throw new ObjectNotFoundException('Cannot find object with id ' . $id);
+        }
+
+        return $index[$id];
+    }
+
+    /**
+     * @param  string  $path
+     *
      * @throws FileNotFoundException
      */
-    protected function loadTranslations($path)
+    protected function loadTranslations($path): void
     {
         $meta = $this->loadJson($path);
 

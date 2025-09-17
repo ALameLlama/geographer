@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Services\Poliglottas;
 
 use ALameLlama\Geographer\Contracts\IdentifiableInterface;
@@ -8,25 +10,39 @@ use ALameLlama\Geographer\Exceptions\MisconfigurationException;
 
 /**
  * Class English
- * @package ALameLlama\FluentGeonames\Services\Poliglottas
  */
-class English implements PoliglottaInterface
+final class English implements PoliglottaInterface
 {
-   /**
-    * @var array
-    */
-    protected $defaultPrepositions = [
+    private array $defaultPrepositions = [
         'from' => 'from',
-        'in' => 'in'
+        'in' => 'in',
     ];
 
-    /**
-     * @var string
-     */
-    protected $code = 'en';
+    private string $code = 'en';
 
     /**
-     * @param array $meta
+     * @param  string  $form
+     * @param  bool  $preposition
+     * @return string
+     *
+     * @throws MisconfigurationException
+     */
+    public function translate(IdentifiableInterface $subject, $form = 'default', $preposition = true)
+    {
+        if ($form !== 'default' && ! isset($this->defaultPrepositions[$form])) {
+            throw new MisconfigurationException('Language ' . $this->code . ' doesn\'t inflict to ' . $form);
+        }
+
+        $result = $subject->expectsLongNames() ? $this->getLongName($subject->getMeta()) : $this->getShortName($subject->getMeta());
+
+        if ($preposition && $form !== 'default') {
+            return $this->defaultPrepositions[$form] . ' ' . $result;
+        }
+
+        return $result;
+    }
+
+    /**
      * @return string
      */
     private function getLongName(array $meta)
@@ -35,33 +51,10 @@ class English implements PoliglottaInterface
     }
 
     /**
-     * @param array $meta
      * @return string
      */
     private function getShortName(array $meta)
     {
         return isset($meta['short']) ? $meta['short']['default'] : $meta['long']['default'];
-    }
-
-    /**
-     * @param IdentifiableInterface $subject
-     * @param string $form
-     * @param bool $preposition
-     * @return string
-     * @throws MisconfigurationException
-     */
-    public function translate(IdentifiableInterface $subject, $form = 'default', $preposition = true)
-    {
-        if ($form != 'default' and !isset($this->defaultPrepositions[$form])) {
-            throw new MisconfigurationException('Language ' . $this->code . ' doesn\'t inflict to ' . $form);
-        }
-
-    	$result = $subject->expectsLongNames() ? $this->getLongName($subject->getMeta()) : $this->getShortName($subject->getMeta());
-
-	    if ($preposition && $form != 'default') {
-	        $result = $this->defaultPrepositions[$form] . ' ' . $result;
-    	}
-
-	    return $result;
     }
 }

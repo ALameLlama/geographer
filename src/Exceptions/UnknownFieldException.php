@@ -1,12 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Exceptions;
+
+use Exception;
 
 /**
  * Class UnknownFieldException
- * @package ALameLlama\FluentGeonames\Exceptions
  */
-class UnknownFieldException extends \Exception
-{
-
-}
+final class UnknownFieldException extends Exception {}

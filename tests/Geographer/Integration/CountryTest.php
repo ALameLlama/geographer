@@ -1,28 +1,32 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests;
 
 use ALameLlama\Geographer\City;
 use ALameLlama\Geographer\Collections\MemberCollection;
 use ALameLlama\Geographer\Country;
-use ALameLlama\Geographer\Divisible;
 use ALameLlama\Geographer\Earth;
 use ALameLlama\Geographer\Services\TranslationAgency;
+use ArrayObject;
 
-class CountryTest extends Test
+use function is_array;
+
+final class CountryTest extends Test
 {
     /**
      * @test
      */
-    public function can_fetch_states_for_all_countries()
+    public function can_fetch_states_for_all_countries(): void
     {
-        $earth = new Earth();
+        $earth = new Earth;
         $countries = $earth->withoutMicro()->setLocale('ru')->sortBy('name');
 
-        foreach($countries as $country) {
+        foreach ($countries as $country) {
             $states = $country->getStates();
-            $this->assertEquals(MemberCollection::class, get_class($states));
-            $this->assertTrue(is_array($states) || $states instanceof \ArrayObject);
+            $this->assertEquals(MemberCollection::class, $states::class);
+            $this->assertTrue(is_array($states) || $states instanceof ArrayObject);
             $array = $country->toArray();
             $this->assertTrue(is_array($array));
             $this->assertArrayHasKey('code', $array);
@@ -31,18 +35,18 @@ class CountryTest extends Test
             $this->assertNotEmpty($country->getContinent());
             $this->assertNotEmpty($country->getNumericCode());
             $country->inflict('in');
-            //echo $country->getShortName() . "\n";
-            //echo $country->getLongName() . "\n";
-            //echo $array['name'] . "\n";
+            // echo $country->getShortName() . "\n";
+            // echo $country->getLongName() . "\n";
+            // echo $array['name'] . "\n";
         }
     }
 
     /**
      * @test
      */
-    public function country_can_ask_for_a_short_name()
+    public function country_can_ask_for_a_short_name(): void
     {
-        $earth = new Earth();
+        $earth = new Earth;
         $russia = $earth->findOne(['code' => 'RU']);
         $longName = $russia->useLongNames()->getName();
         $russia->useShortNames();
@@ -52,9 +56,9 @@ class CountryTest extends Test
     /**
      * @test
      */
-    public function magic_getter_for_findone_works()
+    public function magic_getter_for_findone_works(): void
     {
-        $earth = new Earth();
+        $earth = new Earth;
         $russia = $earth->findOneByCode('RU');
         $this->assertInstanceOf(Country::class, $russia);
         $this->assertNotEmpty($russia->getName());
@@ -63,7 +67,7 @@ class CountryTest extends Test
     /**
      * @test
      */
-    public function country_can_be_built_from_iso_code()
+    public function country_can_be_built_from_iso_code(): void
     {
         $russia = Country::build('RU');
         $this->assertInstanceOf(Country::class, $russia);
@@ -73,9 +77,9 @@ class CountryTest extends Test
     /**
      * @test
      */
-    public function data_can_be_accesses_as_properties_and_as_array_keys()
+    public function data_can_be_accesses_as_properties_and_as_array_keys(): void
     {
-        $earth = new Earth();
+        $earth = new Earth;
         $russia = $earth->findOne(['code' => 'RU']);
         $name = $russia->getName();
         $this->assertEquals($name, $russia->name);
@@ -85,9 +89,9 @@ class CountryTest extends Test
     /**
      * @test
      */
-    public function lower_case_find_also_works()
+    public function lower_case_find_also_works(): void
     {
-        $earth = new Earth();
+        $earth = new Earth;
         $russia = $earth->findOne(['code' => 'ru']);
         $this->assertInstanceOf(Country::class, $russia);
     }
@@ -95,9 +99,9 @@ class CountryTest extends Test
     /**
      * @test
      */
-    public function country_can_ask_for_inflicted_russian_name_with_and_without_prep()
+    public function country_can_ask_for_inflicted_russian_name_with_and_without_prep(): void
     {
-        $russia = (new Earth())->findOne(['code' => 'br'])->setLocale('ru');
+        $russia = (new Earth)->findOne(['code' => 'br'])->setLocale('ru');
         $defaultName = $russia->getName();
         $russia->inflict(TranslationAgency::FORM_IN)->useShortNames()->includePrepositions();
         $this->assertNotEquals($defaultName, $russia->getName());
@@ -107,9 +111,9 @@ class CountryTest extends Test
     /**
      * @test
      */
-    public function capital_can_be_found_for_a_country()
+    public function capital_can_be_found_for_a_country(): void
     {
-        $earth = new Earth();
+        $earth = new Earth;
         $russia = $earth->findOne(['code' => 'RU']);
         $capital = $russia->getCapital();
         $this->assertInstanceOf(City::class, $capital);

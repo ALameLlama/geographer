@@ -1,25 +1,24 @@
 <?php
 
-namespace ALameLlama\Geographer\Services\Poliglottas;
+declare(strict_types=1);
 
-use ALameLlama\Geographer\Contracts\IdentifiableInterface;
+namespace ALameLlama\Geographer\Services\Poliglottas;
 
 /**
  * Class Italian
- * @package ALameLlama\FluentGeonames\Services\Poliglottas
  */
-class Italian extends Base
+final class Italian extends Base
 {
     /**
      * @var string
      */
     protected $code = 'it';
 
-   /**
-    * @var array
-    */
+    /**
+     * @var array
+     */
     protected $defaultPrepositions = [
         'from' => 'da',
-        'in' => 'in'
+        'in' => 'in',
     ];
 }

@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Services\Poliglottas;
 
 /**
  * Class Dutch
- * @package ALameLlama\FluentGeonames\Services\Poliglottas
  */
-class Dutch extends Base
+final class Dutch extends Base
 {
     /**
      * @var string
@@ -18,6 +19,6 @@ class Dutch extends Base
      */
     protected $defaultPrepositions = [
         'from' => 'van',
-        'in' => 'in'
+        'in' => 'in',
     ];
 }

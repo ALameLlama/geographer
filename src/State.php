@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer;
 
 /**
  * Class State
- * @package ALameLlama\FluentGeonames
  *
  * @method string getCode()
  * @method mixed findOneByCode($code)
@@ -21,7 +22,7 @@ namespace ALameLlama\Geographer;
  * @method string getTimezone()
  * @method mixed findOneByTimezone($timezone)
  */
-class State extends Divisible
+final class State extends Divisible
 {
     /**
      * @var string

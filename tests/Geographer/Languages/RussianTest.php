@@ -1,25 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Languages;
 
-use Tests\Test;
 use ALameLlama\Geographer\Earth;
+use Tests\Test;
 
-class RussianTest extends Test
+use function dirname;
+use function in_array;
+use function strval;
+
+final class RussianTest extends Test
 {
-    protected $forms = ['', 'to', 'from'];
+    private string $languageCode = 'ru';
 
-    /**
-     * @var string
-     */
-    protected $languageCode = 'ru';
-
-    /**
-     * @var int
-     */
-    protected $threshold = 50;
-
-    protected $translit = [
+    private array $translit = [
         'а' => 'a',
         'б' => 'b',
         'в' => 'v',
@@ -91,23 +87,23 @@ class RussianTest extends Test
     /**
      * @test
      */
-    public function all_countries_have_translated_names()
+    public function all_countries_have_translated_names(): void
     {
-        $earth = new Earth();
+        $earth = new Earth;
         $countries = $earth->getCountries();
 
-        foreach($countries as $country) {
+        foreach ($countries as $country) {
             $this->assertNotEquals($country->setLocale($this->languageCode)->getName(), $country->setLocale('en')->getName());
-            //echo $country->inflict('from')->setLocale($this->languageCode)->getName() . "\n";
+            // echo $country->inflict('from')->setLocale($this->languageCode)->getName() . "\n";
         }
     }
 
     /**
      * @test
      */
-    public function calculate_state_translation_coverage()
+    public function calculate_state_translation_coverage(): void
     {
-        $planet = (new Earth())->setLocale('ru')->setStandard('iso');
+        $planet = (new Earth)->setLocale('ru')->setStandard('iso');
 
         $total = 0;
         $translated = 0;
@@ -118,31 +114,30 @@ class RussianTest extends Test
             foreach ($states as $state) {
                 $total++;
 
-                if (preg_match('/[A-Za-z]+/', $state->inflict('default')->setLocale('ru')->getName())) {
-                } else {
+                if (in_array(preg_match('/[A-Za-z]+/', $state->inflict('default')->setLocale('ru')->getName()), [0, false], true)) {
                     $translated++;
                 }
             }
 
         }
 
-        echo "Russian translation coverage for ISO states: " . round(($translated / $total) * 100) . "%\n";
+        echo 'Russian translation coverage for ISO states: ' . round(($translated / $total) * 100) . "%\n";
     }
 
     /**
      * @test
      */
-    public function all_iso_states_have_russian_translations()
+    public function all_iso_states_have_russian_translations(): void
     {
-        $planet = (new Earth())->setLocale('ru')->setStandard('iso');
+        $planet = (new Earth)->setLocale('ru')->setStandard('iso');
 
         // Parse translations
-        $input = file_get_contents(dirname(dirname(dirname(__FILE__))) . '/ru.txt');
+        $input = file_get_contents(dirname(__FILE__, 3) . '/ru.txt');
         $line = strtok($input, "\r\n");
         $translations = [];
 
         while ($line !== false) {
-            list($code, $translation, $garbage) = explode("\t", $line);
+            [$code, $translation, $garbage] = explode("\t", $line);
             if (stripos($translation, '.svg') !== false) {
                 $translation = substr($translation, stripos($translation, '.svg') + 5);
             }
@@ -153,13 +148,12 @@ class RussianTest extends Test
             $line = strtok("\r\n");
         }
 
-
         $array = [];
         $output = [
-            'code' => "0",
+            'code' => '0',
             'long' => [
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ];
 
         foreach ($planet->getCountries() as $country) {
@@ -175,7 +169,7 @@ class RussianTest extends Test
                 if (preg_match('/[A-Za-z]+/', $state->inflict('default')->setLocale('ru')->getName())) {
                     $output['code'] = strval($state->getIsoCode());
 
-                    if (! empty($translations[strval($state->getIsoCode())])) {
+                    if (isset($translations[strval($state->getIsoCode())]) && ($translations[strval($state->getIsoCode())] !== '' && $translations[strval($state->getIsoCode())] !== '0')) {
                         $output['long']['default'] = $translations[strval($state->getIsoCode())];
                     } else {
                         $output['long']['default'] = strtr($state->getName(), array_flip($this->translit)) . ' *';
@@ -189,36 +183,33 @@ class RussianTest extends Test
             }
 
             if ($hasFailures) {
-                echo "Got " . $translated . " out of " . $total . " translations\n";
+                echo 'Got ' . $translated . ' out of ' . $total . " translations\n";
                 break;
             }
         }
 
-        //echo json_encode($array, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        // echo json_encode($array, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
 
-    /**
-     *
-     */
-    public function specific_country_has_all_states()
+    public function specific_country_has_all_states(): void
     {
-        $country = (new Earth())->findOneByCode('TT')->setLocale('ru');
+        $country = (new Earth)->findOneByCode('TT')->setLocale('ru');
         $states = $country->getStates();
 
         $array = [];
         $output = [
-            'code' => "0",
+            'code' => '0',
             'long' => [
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ];
 
         foreach ($states as $state) {
             $cities = $state->getCities();
 
-            echo "id: " . $state->getCode() . " iso: " . $state->getIsoCode() .  " names: "
-                . $state->inflict('default')->getName() . "  "
-                . $state->inflict('in')->getName() . "  "
+            echo 'id: ' . $state->getCode() . ' iso: ' . $state->getIsoCode() . ' names: '
+                . $state->inflict('default')->getName() . '  '
+                . $state->inflict('in')->getName() . '  '
                 . $state->inflict('from')->getName() . "\n";
 
             foreach ($cities as $city) {

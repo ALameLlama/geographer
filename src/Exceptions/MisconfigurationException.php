@@ -1,12 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Exceptions;
+
+use Exception;
 
 /**
  * Class MisconfigurationException
- * @package ALameLlama\FluentGeonames\Exceptions
  */
-class MisconfigurationException extends \Exception
-{
-
-}
+final class MisconfigurationException extends Exception {}

@@ -1,26 +1,20 @@
 <?php
 
-namespace Tests;
+declare(strict_types=1);
 
-use ALameLlama\Geographer\Earth;
+namespace Tests;
 
 abstract class Test extends \PHPUnit\Framework\TestCase
 {
     use AnalyzesPerformance;
 
-    /**
-     * @return void
-     */
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->performanceHook();
         parent::setUp();
     }
 
-    /**
-     * @return void
-     */
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         $this->performanceCheck();
         parent::tearDown();

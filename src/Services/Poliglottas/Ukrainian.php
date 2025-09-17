@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Services\Poliglottas;
 
 /**
  * Class Ukrainian
- * @package ALameLlama\FluentGeonames\Services\Poliglottas
  */
-class Ukrainian extends Base
+final class Ukrainian extends Base
 {
     /**
      * @var string
@@ -18,6 +19,6 @@ class Ukrainian extends Base
      */
     protected $defaultPrepositions = [
         'from' => 'з',
-        'in' => 'в'
+        'in' => 'в',
     ];
 }

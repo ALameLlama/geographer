@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ALameLlama\Geographer\Contracts;
 
 /**
  * Interface IdentifiableInterface
- * @package ALameLlama\FluentGeonames\Contracts
  */
 interface IdentifiableInterface
 {
