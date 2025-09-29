@@ -65,6 +65,19 @@ class MemberCollection extends \ArrayObject
     }
 
     /**
+     * @param $keys
+     * @return array
+     */
+    public function only($keys)
+    {
+        $keys = is_array($keys) ? $keys : func_get_args();
+
+        return array_map(function($division) use ($keys) {
+            return array_intersect_key($division, array_flip($keys));
+        }, $this->toArray());
+    }
+
+    /**
      * @return mixed
      */
     public function first()
