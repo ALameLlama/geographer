@@ -133,7 +133,7 @@ class RussianTest extends Test
 
         // Parse translations
         $input = file_get_contents(dirname(__FILE__, 3) . '/ru.txt');
-        $line = strtok($input, "\r\n");
+        $line = strtok((string) $input, "\r\n");
         $translations = [];
 
         while ($line !== false) {

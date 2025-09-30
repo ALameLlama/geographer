@@ -21,11 +21,11 @@ class DefaultManager implements ManagerInterface
     /**
      * Supported subdivision standards
      */
-    const STANDARD_ISO = 'iso';
+    public const STANDARD_ISO = 'iso';
 
-    const STANDARD_FIPS = 'fips';
+    public const STANDARD_FIPS = 'fips';
 
-    const STANDARD_GEONAMES = 'geonames';
+    public const STANDARD_GEONAMES = 'geonames';
 
     private TranslationAgencyInterface $translator;
 
@@ -59,7 +59,7 @@ class DefaultManager implements ManagerInterface
     {
         $this->path = $path ?: self::getDefaultPrefix();
         $this->repository = $repository instanceof RepositoryInterface ? $repository : new File;
-        $this->translator = $translator instanceof TranslationAgencyInterface ? $translator : new TranslationAgency($this->path, $this->repository);
+        $this->translator = $translator instanceof TranslationAgencyInterface ? $translator : new TranslationAgency($this->repository);
     }
 
     public static function getDefaultPrefix(): string

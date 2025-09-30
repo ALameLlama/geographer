@@ -166,7 +166,7 @@ class File implements RepositoryInterface
      */
     public function indexSearch($id, $class)
     {
-        $code = $this->getCodeFromIndex($this->prefix . DIRECTORY_SEPARATOR . self::$indexes[$class], $id);
+        $code = $this->getCodeFromIndex($this->prefix . DIRECTORY_SEPARATOR . self::$indexes[$class], (string) $id);
 
         $key = ($class === State::class) ? 'parentCode' : 'code';
         $path = self::getPath($class, $this->prefix, [$key => $code]);

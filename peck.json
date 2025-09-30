@@ -11,6 +11,8 @@
             "poliglottas",
             "unserialize"
         ],
-        "paths": []
+        "paths": [
+            "tests"
+        ]
     }
 }

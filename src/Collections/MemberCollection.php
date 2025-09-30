@@ -22,7 +22,8 @@ use function is_array;
  */
 class MemberCollection extends ArrayObject
 {
-    use HasManager, ImplementsArray;
+    use HasManager;
+    use ImplementsArray;
 
     /**
      * @var ManagerInterface
@@ -199,7 +200,7 @@ class MemberCollection extends ArrayObject
         $match = true;
 
         foreach ($params as $key => $value) {
-            if (! isset($memberArray[$key]) || strcasecmp($memberArray[$key], $value) !== 0) {
+            if (! isset($memberArray[$key]) || strcasecmp((string) $memberArray[$key], (string) $value) !== 0) {
                 $match = false;
             }
         }
