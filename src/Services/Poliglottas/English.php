@@ -11,7 +11,7 @@ use ALameLlama\Geographer\Exceptions\MisconfigurationException;
 /**
  * Class English
  */
-final class English implements PoliglottaInterface
+class English implements PoliglottaInterface
 {
     private array $defaultPrepositions = [
         'from' => 'from',

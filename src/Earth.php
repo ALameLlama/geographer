@@ -14,7 +14,7 @@ use ALameLlama\Geographer\Services\DefaultManager;
  * @method string getName()
  * @method mixed findOneByName($name)
  */
-final class Earth extends Divisible
+class Earth extends Divisible
 {
     /**
      * @var string

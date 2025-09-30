@@ -6,7 +6,7 @@ namespace Tests;
 
 use ALameLlama\Geographer\City;
 
-final class CityUnitTest extends Test
+class CityUnitTest extends Test
 {
     /**
      * @test

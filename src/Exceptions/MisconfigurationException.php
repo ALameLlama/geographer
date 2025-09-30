@@ -9,4 +9,4 @@ use Exception;
 /**
  * Class MisconfigurationException
  */
-final class MisconfigurationException extends Exception {}
+class MisconfigurationException extends Exception {}

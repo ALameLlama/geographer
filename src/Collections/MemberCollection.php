@@ -14,11 +14,13 @@ use ALameLlama\Geographer\Traits\HasManager;
 use ArrayObject;
 
 use function array_slice;
+use function func_get_args;
+use function is_array;
 
 /**
  * Class MemberCollection
  */
-final class MemberCollection extends ArrayObject
+class MemberCollection extends ArrayObject
 {
     use HasManager, ImplementsArray;
 
@@ -64,23 +66,14 @@ final class MemberCollection extends ArrayObject
         return array_map(fn (array $division) => $division[$key] ?? null, $this->toArray());
     }
 
-    /**
-     * @param $keys
-     * @return array
-     */
-    public function only($keys)
+    public function only($keys): array
     {
         $keys = is_array($keys) ? $keys : func_get_args();
 
-        return array_map(function($division) use ($keys) {
-            return array_intersect_key($division, array_flip($keys));
-        }, $this->toArray());
+        return array_map(fn ($division): array => array_intersect_key($division, array_flip($keys)), $this->toArray());
     }
 
-    /**
-     * @return mixed
-     */
-    public function first()
+    public function first(): mixed
     {
         return reset($this->divisions);
     }

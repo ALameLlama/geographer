@@ -23,7 +23,7 @@ use ALameLlama\Geographer\Services\Poliglottas\Ukrainian;
 /**
  * Class TranslationAgency
  */
-final class TranslationAgency implements TranslationAgencyInterface
+class TranslationAgency implements TranslationAgencyInterface
 {
     /**
      * Constants for available languages

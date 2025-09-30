@@ -2,7 +2,14 @@
     "preset": "laravel",
     "ignore": {
         "words": [
-            "php"
+            "args",
+            "fips",
+            "geonames",
+            "misconfiguration",
+            "php",
+            "poliglotta",
+            "poliglottas",
+            "unserialize"
         ],
         "paths": []
     }

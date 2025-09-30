@@ -16,7 +16,7 @@ use function intval;
 use function is_string;
 use function strval;
 
-final class StateTest extends Test
+class StateTest extends Test
 {
     /**
      * @test

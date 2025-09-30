@@ -9,4 +9,4 @@ use Exception;
 /**
  * Class UnknownFieldException
  */
-final class UnknownFieldException extends Exception {}
+class UnknownFieldException extends Exception {}

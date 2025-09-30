@@ -11,11 +11,11 @@ use function dirname;
 use function in_array;
 use function strval;
 
-final class RussianTest extends Test
+class RussianTest extends Test
 {
     private string $languageCode = 'ru';
 
-    private array $translit = [
+    private array $translate = [
         'а' => 'a',
         'б' => 'b',
         'в' => 'v',
@@ -172,7 +172,7 @@ final class RussianTest extends Test
                     if (isset($translations[strval($state->getIsoCode())]) && ($translations[strval($state->getIsoCode())] !== '' && $translations[strval($state->getIsoCode())] !== '0')) {
                         $output['long']['default'] = $translations[strval($state->getIsoCode())];
                     } else {
-                        $output['long']['default'] = strtr($state->getName(), array_flip($this->translit)) . ' *';
+                        $output['long']['default'] = strtr($state->getName(), array_flip($this->translate)) . ' *';
                     }
 
                     $array[] = $output;

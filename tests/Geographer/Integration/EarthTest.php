@@ -12,7 +12,7 @@ use function count;
 use function is_array;
 use function strlen;
 
-final class EarthTest extends Test
+class EarthTest extends Test
 {
     const TOTAL_COUNTRIES = 249;
 

@@ -16,7 +16,7 @@ use function dirname;
 /**
  * Class DefaultManager
  */
-final class DefaultManager implements ManagerInterface
+class DefaultManager implements ManagerInterface
 {
     /**
      * Supported subdivision standards

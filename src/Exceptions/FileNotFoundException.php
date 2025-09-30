@@ -9,4 +9,4 @@ use Exception;
 /**
  * Class FileNotFoundException
  */
-final class FileNotFoundException extends Exception {}
+class FileNotFoundException extends Exception {}

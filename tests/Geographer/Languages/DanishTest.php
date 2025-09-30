@@ -7,7 +7,7 @@ namespace Tests\Languages;
 use ALameLlama\Geographer\Earth;
 use Tests\Test;
 
-final class DanishTest extends Test
+class DanishTest extends Test
 {
     private string $languageCode = 'da';
 

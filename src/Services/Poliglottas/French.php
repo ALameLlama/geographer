@@ -7,7 +7,7 @@ namespace ALameLlama\Geographer\Services\Poliglottas;
 /**
  * Class French
  */
-final class French extends Base
+class French extends Base
 {
     /**
      * @var string

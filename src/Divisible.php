@@ -66,7 +66,6 @@ abstract class Divisible implements ArrayAccess, IdentifiableInterface
      * Country constructor.
      *
      * @param  string  $parentCode
-     * @param  ManagerInterface  $manager
      */
     public function __construct(array $meta = [], protected $parentCode = null, ?ManagerInterface $manager = null)
     {
@@ -198,7 +197,6 @@ abstract class Divisible implements ArrayAccess, IdentifiableInterface
     }
 
     /**
-     * @param  MemberCollection  $collection
      * @return void
      */
     protected function loadMembers(?MemberCollection $collection = null)

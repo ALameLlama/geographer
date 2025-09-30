@@ -12,7 +12,7 @@ use function in_array;
 use function is_int;
 use function is_string;
 
-final class CityTest extends \PHPUnit\Framework\TestCase
+class CityTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Countries that don't have any big cities

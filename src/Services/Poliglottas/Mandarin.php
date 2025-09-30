@@ -7,7 +7,7 @@ namespace ALameLlama\Geographer\Services\Poliglottas;
 /**
  * Class Mandarin
  */
-final class Mandarin extends Base
+class Mandarin extends Base
 {
     /**
      * @var string

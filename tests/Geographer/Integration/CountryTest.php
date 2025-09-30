@@ -13,7 +13,7 @@ use ArrayObject;
 
 use function is_array;
 
-final class CountryTest extends Test
+class CountryTest extends Test
 {
     /**
      * @test

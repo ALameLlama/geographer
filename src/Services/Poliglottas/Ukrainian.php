@@ -7,7 +7,7 @@ namespace ALameLlama\Geographer\Services\Poliglottas;
 /**
  * Class Ukrainian
  */
-final class Ukrainian extends Base
+class Ukrainian extends Base
 {
     /**
      * @var string

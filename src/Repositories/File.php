@@ -20,7 +20,7 @@ use ALameLlama\Geographer\State;
 use function dirname;
 use function in_array;
 
-final class File implements RepositoryInterface
+class File implements RepositoryInterface
 {
     /**
      * Path to resource files

@@ -22,7 +22,7 @@ namespace ALameLlama\Geographer;
  * @method bool getCapital()
  * @method mixed findOneByCapital($capital)
  */
-final class City extends Divisible
+class City extends Divisible
 {
     /**
      * @var string

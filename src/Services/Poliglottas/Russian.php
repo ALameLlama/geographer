@@ -10,7 +10,7 @@ use function in_array;
 /**
  * Class Russian
  */
-final class Russian extends Base
+class Russian extends Base
 {
     /**
      * @var string

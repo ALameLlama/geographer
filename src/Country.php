@@ -43,7 +43,7 @@ use ALameLlama\Geographer\Services\DefaultManager;
  * @method string getName()
  * @method mixed findOneByName($name)
  */
-final class Country extends Divisible
+class Country extends Divisible
 {
     /**
      * @var string

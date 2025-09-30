@@ -22,7 +22,7 @@ namespace ALameLlama\Geographer;
  * @method string getTimezone()
  * @method mixed findOneByTimezone($timezone)
  */
-final class State extends Divisible
+class State extends Divisible
 {
     /**
      * @var string

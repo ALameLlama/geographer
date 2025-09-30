@@ -13,7 +13,7 @@ use ALameLlama\Geographer\Exceptions\MisconfigurationException;
 use ALameLlama\Geographer\Exceptions\ObjectNotFoundException;
 use ALameLlama\Geographer\State;
 
-final class Memcached extends File implements RepositoryInterface
+class Memcached extends File implements RepositoryInterface
 {
     public $prefix;
 
