@@ -64,7 +64,23 @@ final class MemberCollection extends ArrayObject
         return array_map(fn (array $division) => $division[$key] ?? null, $this->toArray());
     }
 
-    public function first(): mixed
+    /**
+     * @param $keys
+     * @return array
+     */
+    public function only($keys)
+    {
+        $keys = is_array($keys) ? $keys : func_get_args();
+
+        return array_map(function($division) use ($keys) {
+            return array_intersect_key($division, array_flip($keys));
+        }, $this->toArray());
+    }
+
+    /**
+     * @return mixed
+     */
+    public function first()
     {
         return reset($this->divisions);
     }
